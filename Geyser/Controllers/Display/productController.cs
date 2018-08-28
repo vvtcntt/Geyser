@@ -62,7 +62,7 @@ namespace Geyser.Controllers.DisplayCustom
             ViewBag.color = tblconfig.Color;
             int idmanu = int.Parse(db.TblConnectManuProduct.FirstOrDefault(p => p.IdCate == tblgroupProduct.Id).IdManu.ToString());
             ViewBag.manuName = db.TblManufactures.FirstOrDefault(p => p.Id == idmanu).Name;
-            ViewBag.Manu = "<li><span>Thương hiệu : Karofi</span></li>";
+            ViewBag.Manu = "<li><span>Thương hiệu : Geyser</span></li>";
             ViewBag.favicon = " <link href=\"" + tblconfig.Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
 
             ViewBag.Title = "<title>" + ProductDetail.Title + "</title>";

@@ -29,16 +29,16 @@ namespace Geyser.Controllers.DisplayCustom
             var TblConfig = db.TblConfig.FirstOrDefault();
             ViewBag.address = TblConfig.Address;
             
-             ViewBag.name = "Trung tâm phân phối Karofi chính hãng tại Việt Nam";
+             ViewBag.name = "Trung tâm phân phối Geyser chính hãng tại Việt Nam";
                 ViewBag.color = TblConfig.Color;
                 ViewBag.hotline = TblConfig.MobileIn +" - "+ TblConfig.HotlineIn;
                 ViewBag.mobile = TblConfig.MobileIn;
                 ViewBag.logo = TblConfig.Logo;
                 ViewBag.email = TblConfig.Email;
                 ViewBag.website = "Geyser.vn";
-                 ViewBag.Title = "<title>Liên hệ Karofi Chính Hãng</title>";
-                ViewBag.Description = "<meta name=\"description\" content=\"Liên hệ địa chỉ Karofi chính hãng tại nhà dành cho khách hàng Việt Nam\"/>";
-                ViewBag.Keyword = "<meta name=\"keywords\" content=\"Karofi chính hãng\" /> ";
+                 ViewBag.Title = "<title>Liên hệ Geyser Chính Hãng</title>";
+                ViewBag.Description = "<meta name=\"description\" content=\"Liên hệ địa chỉ Geyser chính hãng tại nhà dành cho khách hàng Việt Nam\"/>";
+                ViewBag.Keyword = "<meta name=\"keywords\" content=\"Geyser chính hãng\" /> ";
              
              return View(db.TblConfig.First());
         }

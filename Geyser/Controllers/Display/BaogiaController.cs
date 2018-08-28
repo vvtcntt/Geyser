@@ -68,14 +68,14 @@ namespace Geyser.Controllers.Display.Section.Baogia
                 }
 
                 ViewBag.Title = "<title>Bảng báo giá " + groupproduct.Name + " " + moth + "năm " + DateTime.Now.Year + " Rẻ Nhất Việt Nam</title>";
-                ViewBag.Description = "<meta name=\"description\" content=\"Bảng báo giá " + groupproduct.Name + " chính hãng Giá rẻ nhất Việt Nam, Cam kết Karofi Hàng Chất Lượng .\"/>";
+                ViewBag.Description = "<meta name=\"description\" content=\"Bảng báo giá " + groupproduct.Name + " chính hãng Giá rẻ nhất Việt Nam, Cam kết Geyser Hàng Chất Lượng .\"/>";
                 ViewBag.Keyword = "<meta name=\"keywords\" content=\"Bảng Báo giá sản phẩm " + groupproduct.Name + "\" /> ";
                 string meta = "";
             
                 ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/bao-gia/" + groupproduct.Tag + "\" />";
                 meta += "<meta itemprop=\"name\" content=\"Bảng báo giá " + groupproduct.Name + " " + moth + "năm " + DateTime.Now.Year + " rẻ nhất HN\" />";
                 meta += "<meta itemprop=\"url\" content=\"" + Request.Url.ToString() + "\" />";
-                meta += "<meta itemprop=\"description\" content=\"Bảng báo giá " + groupproduct.Name + " chính hãng của Karofi Chính Hãng Giá rẻ nhất Việt Nam\" />";
+                meta += "<meta itemprop=\"description\" content=\"Bảng báo giá " + groupproduct.Name + " chính hãng của Geyser Chính Hãng Giá rẻ nhất Việt Nam\" />";
                 meta += "<meta itemprop=\"image\" content=\"http://Geyser.vn" + groupproduct.Images + "\" />";
                 meta += "<meta property=\"og:title\" content=\"Bảng báo giá " + groupproduct.Name + " " + moth + "năm " + DateTime.Now.Year + " rẻ nhất HN\" />";
                 meta += "<meta property=\"og:type\" content=\"product\" />";
@@ -116,7 +116,7 @@ namespace Geyser.Controllers.Display.Section.Baogia
 
                     chuoi += "<a href=\"/1/" + listproduct[i].Tag + "\" title=\"" + listproduct[i].Name + "\">" + listproduct[i].Name + " " + note + " </a>";
                     chuoi += "<span class=\"n2\">Chức năng : " + listproduct[i].NoteInfo + "</span>";
-                    chuoi += "<span class=\"n3\">Trực tiếp từ Karofi Chính Hãng </span>";
+                    chuoi += "<span class=\"n3\">Trực tiếp từ Geyser Chính Hãng </span>";
                     chuoi += " </td>";
                     chuoi += "<td class=\"Codes\"><a href=\"/Tabs/" + listproduct[i].Code + "\" title=\"" + listproduct[i].Code + "\">" + listproduct[i].Code + "</a></td>";
                     chuoi += "<td class=\"Wans\"><a href=\"/1/" + listproduct[i].Tag + "\" title=\"" + listproduct[i].Name + "\"><img src=\"" + listproduct[i].ImageLinkThumb + "\" alt=\"" + listproduct[i].Name + "\" title=\"" + listproduct[i].Name + "\"/></a>" + listproduct[i].Time + "</td>";

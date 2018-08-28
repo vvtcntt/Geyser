@@ -34,16 +34,16 @@ header{width:100%; height:auto; float:left; margin:0; padding:0}
 #topHeader #contentHeader{width:1250px; height:auto; margin:0px auto}
 #topHeader #contentHeader #leftTopHeader span.icon{font-size:17px}
 #topHeader #contentHeader #leftTopHeader span{display:inline-block; color:#c3ffc1; margin:0px 5px 0px 0px; line-height:25px; font-size:14px; padding::5px 7px}
-#topHeader #contentHeader #leftTopHeader span.hotline{  color:#f6ff00; font-size:17px} 
+#topHeader #contentHeader #leftTopHeader span.hotline{  color:#fff; font-size:17px} 
 #topHeader #rightTopHeader{width:50%; height:auto; float:left; text-align:right }
 #topHeader #leftTopHeader{width:50%; height:auto; float:left; text-align:left}
 #topHeader #rightTopHeader span{display:inline-block; color:#c3ffc1; margin:0px 5px 0px 0px; line-height:25px; font-size:14px}
-#topHeader #rightTopHeader span:last-child{  color:#f6ff00; font-size:17px}
+#topHeader #rightTopHeader span:last-child{  color:#fff; font-size:17px}
 #banner{width:100%; height:auto; float:left; margin:0; padding:0px 0px 10px 0px}
 #contentBanner{width:1250px; height:auto; margin:0px auto; padding-bottom:20px; text-align:center}
 #contentBanner p{text-align:center; margin:15px 0px 7px 0px; display:inline-block}
 #contentBanner p span{ font-size:45px; font-weight:bold; text-align:center; text-transform:uppercase; color:#FFF; margin:10px 7px 0px 0px; line-height:40px; display:inline-block; float:left }
-#contentBanner p img{display:inline-block;  float:inherit; height:55px }
+#contentBanner p img{display:inline-block;  float:inherit; height:110px }
 #contentBanner span.name{ font-size:30px; font-weight:normal; text-align:center; text-transform:uppercase; margin:0px 0px 7px 0px; color:#FFF; display:block}
 #contentBanner ul{width:100%; height:auto; float:left; margin:0px; text-align:center}
 #contentBanner ul li{display:inline-block}
@@ -53,7 +53,7 @@ section{width:100%; height:auto; float:left; margin:0px}
 #header{width:100%; height:auto; float:left; margin:0px; padding:15px 0px; background:#FFF}
 #header #contentHeader{width:1250px; height:auto; margin:0px auto}
 #header #logo{width:28%; height:auto; float:left; margin:0px}
-#header #logo img{max-height:44px; margin:8px 0px 8px 0px; width:auto; display:block}
+#header #logo img{max-height:64px; margin:0px 0px 0px 0px; width:auto; display:block}
 #header #logo p{ color:#e35f15; font-size:14px; display:block; text-align:left; margin:3px 7px 3px 3px}
 #header #logo p span{color:#38ab35}  
 #header #search {width:45%; height:auto; float:left; margin:7px 0px 0px 0px}
@@ -305,7 +305,7 @@ nav.page-navigation li.current a img, nav.page-navigation li:hover a img{ opacit
 .tearVideoHomes{width:37%; height:auto; float:left; margin:0px 0px 0px 4%}
 #videoHomes{width:100%; height:auto; float:left; margin:20px 0px 0px 0px}
 
-/*Footer Karofi*/
+/*Footer Geyser*/
 #Supports{width:100%;padding-top:10px;padding-bottom:10px;background:#a1a1a1 none repeat scroll 0% 0%;height:100%;float:left}
 #Content_Supports{width:1250px;height:auto;margin:3px auto}
   #support_1{width:32%;height:auto;float:left;margin:0px 15px 0px 0px;}
@@ -404,10 +404,10 @@ overflow: hidden;
 }
 #listInfo #contentListInfo .tearInfo ul li h2{font-weight:normal; margin:4px 0px}
 #footerbottom{width:100%; height:auto; float:left; margin:0px; padding:10px 0px 48px 0px}
-#contentFooterbottom{width:1300px; height:auto; margin:0px auto; clear:both}
-#logoFooter{width:25%; height:auto; float:left}
+#contentFooterbottom{width:1250px; height:auto; margin:0px auto; clear:both}
+#logoFooter{width:15%; height:auto; float:left}
 #logoFooter img{width:auto; height:40px; float:left; margin:4px 0px}
-#centerFooter{width:53%; height:auto; float:left; margin:0px}
+#centerFooter{width:63%; height:auto; float:left; margin:0px}
 #centerFooter p{ font-size:12px; color:#3e3e3e; margin:5px}
 #centerFooter p.p1{margin-top:7px}
 #centerFooter p span{font-weight: bold;
