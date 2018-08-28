@@ -1,0 +1,40 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Geyser.Models.TblProduct>
+
+@{
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+@if (ViewBag.check == false)
+{
+
+    <div id="Contents">
+        <div class="nVar_Product">
+            <nav>@Html.Raw(ViewBag.nUrl)</nav>
+        </div>
+
+        @Html.Raw(ViewBag.chuoihienthi)
+        @*@Html.PagedListPager(Model, page => Url.Action("ListProduct", new { page = page, sortOrder = ViewBag.CurrentSortOrder, sortName = ViewBag.CurrentSortName, sortLevel = ViewBag.CurrentSortLevel }), (PagedListRenderOptions)ViewBag.ship)*@
+
+        <div class="Clear"></div>
+    </div>
+
+}
+else
+{
+    <div id="root">
+        <nav>
+              @Html.Raw(ViewBag.nUrl)
+
+
+        </nav>
+    </div>
+    <div id="product">
+        <div id="headshort">
+            <h1>@ViewBag.name</h1>
+            <div id="contentHeadShort">
+                @Html.Raw(ViewBag.headshord)
+            </div>
+        </div>
+        @Html.Raw(ViewBag.result)
+    </div>
+}

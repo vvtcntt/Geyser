@@ -1,0 +1,21 @@
+﻿
+<div id="newsHomes">
+    <div class="tearNewsHomes">
+        <div class="nvarTearNewsHomes">
+            <span>Tin tức về @ViewBag.name</span>
+
+        </div>
+
+        <div class="contentNewsHomes">
+            @Html.Raw(ViewBag.result) 
+        </div>
+    </div>
+    <div class="tearVideoHomes">
+        <div class="nvarTearNewsHomes">
+            <span>Giới thiệu về @ViewBag.name</span>
+        </div>
+        <div id="videoHomes">
+            <iframe width="100%" height="270" src="https://www.youtube.com/embed/@ViewBag.code" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>

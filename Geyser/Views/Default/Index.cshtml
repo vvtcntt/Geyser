@@ -1,0 +1,18 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+@{ Html.RenderAction("partialHeadHome", "Default");}
+@Html.Raw(ViewBag.h1)
+@{ Html.RenderAction("productSaleHomes", "Default");}
+@{ Html.RenderAction("productHomes", "Default");}
+
+@{ Html.RenderAction("newsVideoHomes", "Default");}
+
+
+<div class="Clear"></div>
+<style>
+    #menuBar {
+        display: block !important
+    }
+</style>

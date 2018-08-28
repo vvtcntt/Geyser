@@ -1,0 +1,299 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+@model Geyser.Models.TblProduct
+<div id="root">
+    <nav>
+        @Html.Raw(ViewBag.nUrl)
+    </nav>
+</div>
+<div id="product">
+
+    <div id="contentProduct">
+        <div id="topContentProduct">
+            <div id="imageProduct">
+
+                <div id="genuine" style="background:url(/Images/images/tem-Karofi-chinh-hang.png); background-size:100%"></div>
+
+                <div id="imgThumb">
+                    <a href="javascript:;" title="@Model.Name"><img src="@Model.ImageLinkDetail" alt="@Model.Name" /></a>
+                </div>
+                <div id="listImageProduct">
+                    <ul>
+                        @Html.Raw(ViewBag.chuoiimages)
+                    </ul>
+                </div>
+            </div>
+            <div id="infoProduct">
+                <h1>@Model.Name</h1>
+                <ul class="ulPrice">
+                    <li>Giá khuyến mại : <span class="priceSale">@String.Format("{0:#,#}", Model.PriceSale)đ</span></li>
+                    <li>Giá niêm yết : <span class="price">@String.Format("{0:#,#}", Model.Price)đ</span></li>
+                    <li>Bạn tiết kiệm thêm : <span class="tk">@String.Format("{0:#,#}", Model.Price - Model.PriceSale)đ</span></li>
+                </ul>
+                @if (Model.PriceNote != null && Model.PriceNote != "")
+    {
+            <span class="priceNote">@Model.PriceNote</span>
+
+}
+                <p class="p2">Nơi nào bán rẻ hơn quý khách vui lòng gọi lại chúng tôi sẽ giảm bằng và tặng quà quý khách !</p>
+
+                <ul class="ulInfo">
+                    <li>
+                        <i class="fa fa-check-circle-o" aria-hidden="true" style="color:@ViewBag.color"></i>
+                        Mã sản phẩm : <span>@Model.Code</span>
+                    </li>
+                    <li><i class="fa fa-check-circle-o" aria-hidden="true" style="color:@ViewBag.color"></i> Xuất xứ : <span>Chính hãng </span></li>
+
+                    <li><i class="fa fa-check-circle-o" aria-hidden="true" style="color:@ViewBag.color"></i> Bảo hành : <span>@Model.Warranty tháng</span></li>
+                </ul>
+                <ul class="ulInfo">
+
+                    <li>
+                        <i class="fa fa-check-circle-o" aria-hidden="true" style="color:@ViewBag.color"></i> Vat :
+                        @if (Model.Vat == true)
+            {
+                <span>Đã bao gồm</span>
+}
+else
+{
+            <span>Chưa bao gồm</span>
+}
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle-o" aria-hidden="true" style="color:@ViewBag.color"></i> Vận chuyển :
+
+                        @if (Model.Transport == true)
+            {
+                <span>Giao hàng toàn quốc</span>
+}
+else
+{
+            <span>Vui lòng liên hệ</span>
+}
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle-o" aria-hidden="true" style="color:@ViewBag.color"></i> Tình trạng :
+                        @if (Model.Status == true)
+            {<span>Còn hàng</span> }
+else
+{
+            <span>Tạm hết hàng</span>
+}
+                    </li>
+                </ul>
+                <div class="infoDetail">
+                    @Html.Raw(Model.Info)
+                </div>
+                <div class="boxSale">
+                    <span class="sale">Khuyến mại trong tuần</span>
+                    <div class="contentBoxSale">
+                        @Html.Raw(Model.Sale)
+                    </div>
+                </div>
+                <div class="boxOrder">
+                    <div class="order" style="background:@ViewBag.color">
+                        @if (Request.Browser.IsMobileDevice)
+            {
+                <a href="/order/OrderAdd?id=@Model.Id&ord=1">Đặt hàng <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+
+}
+else
+{
+            <a rel="miendatwebPopup" href="#popup_content" onclick="CreateOrder(@Model.Id)">Đặt hàng <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+
+}
+                    </div>
+                    <div id="service">
+                        <span href="" title="" style="color:#ff5a00">
+                            <i class="fa fa-bus" aria-hidden="true"></i>
+
+                            Miễn phí vận chuyển và lắp đặt
+                        </span>
+                        <a href="" style="color:@ViewBag.color"><i class="fa fa-share" aria-hidden="true"></i> Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="transports">
+            <div class="Tear_Tran tt">
+                <span class="tr1">MIỄN PHÍ LẮP ĐẶT </span>
+                <span class="tr2">Đơn hàng >= 250.00đ tại Hà Nội</span>
+            </div>
+            <div class="Tear_Tran gh">
+                <span class="tr1">CHUYỂN HÀNG TOÀN QUỐC</span>
+                <span class="tr2">Chuyển hàng, thu tiền tại nhà </span>
+            </div>
+            <div class="Tear_Tran dh">
+                <span class="tr1">LÀM VIỆC TỪ 8H - 21H30</span>
+                <span class="tr2">Làm việc cả thứ 7 - CN</span>
+            </div>
+        </div>
+        <div id="detailProduct">
+            <div class="nvarName" style="border-bottom:1px solid @ViewBag.color">
+                <span style="background:@ViewBag.color">Thông tin sản phẩm</span>
+            </div>
+            <div id="contentDetailProduct">
+                <div id="infoContent">
+
+                    <table id="table">
+                        <tbody>
+                            <tr>
+                                <td>Tên sản phẩm :</td>
+                                <td>@Model.Name</td>
+                            </tr>
+                            <tr>
+                                <td>Mã sản phẩm :</td>
+                                <td>@Model.Code</td>
+                            </tr>
+                            <tr>
+
+                                <td>Kích thước:</td>
+                                <td>@Model.Size (mm)</td>
+                            </tr>
+                            <tr>
+            <td>Thương hiệu</td>
+            <td>@ViewBag.manuName</td>
+        </tr>
+                            <tr>
+                                <td>Bảo hành</td>
+                                <td>@Model.Warranty tháng</td>
+                            </tr>
+
+
+                            <tr><td>Tuổi thọ</td><td>@Model.Time<br> </td> </tr>
+                            @Html.Raw(ViewBag.chuoi)
+                        </tbody>
+                    </table>
+                </div>
+                @if (Model.Video != null && Model.Video != "")
+                {
+                    <h3>Giới thiệu @Model.Name</h3>
+                    <div id="videoContent">
+                        @if (Request.Browser.IsMobileDevice)
+                        {<iframe width="100%" height="320" src="https://www.youtube.com/embed/@Model.Video?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=allowfullscreen></iframe>
+
+                        }
+                        else
+                        {
+                            <iframe width="100%" height="760" src="https://www.youtube.com/embed/@Model.Video?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=allowfullscreen></iframe>
+
+                        }
+                    </div>
+
+                }
+                <div class="clear"></div>
+                <div id="contentBody">
+                    @Html.Raw(Model.Content)
+                    @Html.Raw(Model.Parameter)
+                </div>
+                <img src="~/Content/Display/images/Karofi-chung-nhan.jpg" />
+            </div>
+            <div id="tags">
+                <span><i class="fa fa-tags" aria-hidden="true"></i> Tags: </span> @Html.Raw(ViewBag.chuoitag)
+            </div>
+            <div class="buynow-button" style="border-left: 7px @ViewBag.color  solid; background-color: #fafafa; ">
+                <div class="buynow-button-inner">
+                    <h3 class="name-product">@Model.Name</h3>
+                    <div class="thumb"><img src="@Model.ImageLinkThumb" alt="@Model.Name" title="@Model.Name"></div>
+                    <div class="price">
+                        <span>Giá bán: <span class="new-price">@String.Format("{0:#,#}", Model.PriceSale) vnđ</span></span><br>
+                        <span>Giá thị trường: <span class="old-price">@String.Format("{0:#,#}", Model.Price) vnđ</span></span><br>
+                    </div>
+                    <div class="button">
+
+                        @if (Request.Browser.IsMobileDevice)
+                        {
+                            <a style="background:@ViewBag.color; text-align:center" href="/order/OrderAdd?id=@Model.Id&ord=1" class="buy-now">Đặt hàng <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+
+                        }
+                        else
+                        {
+                            <input type="button" style="background:@ViewBag.color" value="Đặt hàng" class="buy-now" id="open_popup" name="open_popup" rel="miendatwebPopup" href="#popup_content" onclick="CreateOrder(@Model.Id)" />
+
+                        }
+                    </div>
+
+                    <div style="clear: both"></div>
+                </div><!--End .buynow-button-->
+            </div>
+            <div id="commment">
+                <div class="Mxh" style="float: left; width: 100%; margin-left: 0px">
+                    <div class="fb-like" data-send="true" data-layout="button_count" data-width="60"
+                         data-show-faces="true" style="float:left">
+                    </div>
+                    <div style="margin:0px 5px; float:left" class="zalo-share-button" data-href="http://developers.zalo.me" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=false></div>
+                    <div class="tweet" style="margin:0px 5px; float:left">
+                        <if condition="in_array($forum['forumid'], array(1,2))">
+                            <else />
+                            <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="YOUR-TWITTER-USERNAME" rel="nofollow">Tweet</a>
+                            <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                        </if>
+                    </div>
+                    <div id="g" style="float: left; margin: 0px 5px; height: 15px; width: 20px">
+                        <g:plusone size="medium"></g:plusone>
+                    </div>
+                </div>
+                <span class="name">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    Bình luận sản phẩm
+                </span>
+                @*<div id="contentComment">
+                    <div id="boxComment">
+                        <input type="text" name="txtComment" id="txtComment" placeholder="Nhập nội dung bình luận ...." />
+                    </div>
+                    <div id="submitComment">
+                        <input type="text" name="txtName" id="txtName" placeholder="Nhập họ và tên" />
+                        <input type="email" name="txtEmail" id="txtEmail" placeholder="Nhập Email" />
+                        <button style="background:@ViewBag.color" type="submit" id="btnComment" name="btnComment">Bình luận</button>
+                        <a href="" style=""><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+                    </div>
+                    <div id="listComment">
+                            <div class="tearComment">
+                                <span class="nameComment"><i class="fa fa-user-circle" aria-hidden="true"></i> Hoàng Văn Thái</span>
+                                <div class="contentTearCommment">
+                                    Chào anh,
+                                    Với sản phẩm này dùng không bị lỗi thời anh nha , sản phẩm này rất nhiều người ưa chuộng anh nhé .
+                                    Thông tin đến anh.
+                                </div>
+                                <div class="boxLike">
+                                    <a href="" title="">Trả lời</a><a href="" title=""><i class="fa fa-thumbs-up" aria-hidden="true"></i> Thích (10)</a><a href="" title="">10:25PM 25/07/2017</a>
+                                </div>
+                            </div>
+                            <div class="tearComment">
+                                <span class="nameComment"><i class="fa fa-user-circle" aria-hidden="true"></i> Hoàng Văn Thái</span>
+                                <div class="contentTearCommment">
+                                    Chào anh,
+                                    Với sản phẩm này dùng không bị lỗi thời anh nha , sản phẩm này rất nhiều người ưa chuộng anh nhé .
+                                    Thông tin đến anh.
+                                </div>
+                            </div>
+                        </div>
+                </div>*@
+            </div>
+        </div>
+
+        <div id="productConnect">
+            <div class="nvarName" style="border-bottom:1px solid @ViewBag.color">
+                <span style="background:@ViewBag.color">Sản phẩm liên quan</span>
+            </div>
+            @Html.Raw(ViewBag.resultLienquan)
+        </div>
+    </div>
+</div>
+<style>
+     #contentDetailProduct h2{ font-size:17px; color:@ViewBag.color1 font-family:"Open Sans",sans-serif!important; margin:15px 0px; position:relative; padding-bottom:5px;       font-weight:bold; text-transform:uppercase;}
+#contentDetailProduct h2:before{position:absolute; border-bottom:2px solid @ViewBag.color; content:''; bottom:0px; left:0px; width:80px}
+#contentDetailProduct h2:after{position:absolute; border-bottom:2px solid @ViewBag.color3; content:''; bottom:0px; left:82px; width:200px}
+      #contentDetailProduct h3{ font-size:17px; color:@ViewBag.color1 font-family:"Open Sans",sans-serif!important; margin:15px 0px; position:relative; padding-bottom:5px;       font-weight:bold; text-transform:uppercase;}
+#contentDetailProduct h3:before{position:absolute; border-bottom:2px solid @ViewBag.color; content:''; bottom:0px; left:0px; width:80px}
+#contentDetailProduct h3:after{position:absolute; border-bottom:2px solid @ViewBag.color3; content:''; bottom:0px; left:82px; width:200px}
+</style>
+<script>
+    function getImage(images, cl) {
+        $("#imgThumb a").html('<img src=' + images + ' class="small" alt="" />');
+        $("#listImageProduct ul li").removeClass("setImages");
+        $("." + cl).addClass("setImages");
+        return true;
+    }
+</script>
