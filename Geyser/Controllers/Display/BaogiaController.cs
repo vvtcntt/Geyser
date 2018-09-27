@@ -43,7 +43,7 @@ namespace Geyser.Controllers.Display.Section.Baogia
                  ViewBag.name = groupproduct.Name;
                 ViewBag.color = tblcongif.Color;
                 ViewBag.email = tblcongif.Email;
-                ViewBag.website = "Geyser.vn";
+                ViewBag.website = "maylocnuocgeyser.com.vn";
                  ViewBag.favicon = " <link href=\"" + tblcongif.Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
                 ViewBag.imagemanu = tblcongif.Logo;
 
@@ -72,20 +72,20 @@ namespace Geyser.Controllers.Display.Section.Baogia
                 ViewBag.Keyword = "<meta name=\"keywords\" content=\"Bảng Báo giá sản phẩm " + groupproduct.Name + "\" /> ";
                 string meta = "";
             
-                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/bao-gia/" + groupproduct.Tag + "\" />";
+                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/bao-gia/" + groupproduct.Tag + "\" />";
                 meta += "<meta itemprop=\"name\" content=\"Bảng báo giá " + groupproduct.Name + " " + moth + "năm " + DateTime.Now.Year + " rẻ nhất HN\" />";
                 meta += "<meta itemprop=\"url\" content=\"" + Request.Url.ToString() + "\" />";
                 meta += "<meta itemprop=\"description\" content=\"Bảng báo giá " + groupproduct.Name + " chính hãng của Geyser Chính Hãng Giá rẻ nhất Việt Nam\" />";
-                meta += "<meta itemprop=\"image\" content=\"http://Geyser.vn" + groupproduct.Images + "\" />";
+                meta += "<meta itemprop=\"image\" content=\"http://maylocnuocgeyser.com.vn" + groupproduct.Images + "\" />";
                 meta += "<meta property=\"og:title\" content=\"Bảng báo giá " + groupproduct.Name + " " + moth + "năm " + DateTime.Now.Year + " rẻ nhất HN\" />";
                 meta += "<meta property=\"og:type\" content=\"product\" />";
                 meta += "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\" />";
-                meta += "<meta property=\"og:image\" content=\"http://Geyser.vn" + groupproduct.Images + "\" />";
-                meta += "<meta property=\"og:site_name\" content=\"http://Geyser.vn\" />";
+                meta += "<meta property=\"og:image\" content=\"http://maylocnuocgeyser.com.vn" + groupproduct.Images + "\" />";
+                meta += "<meta property=\"og:site_name\" content=\"http://maylocnuocgeyser.com.vn\" />";
                 meta += "<meta property=\"og:description\" content=\"" + groupproduct.Description + "\" />";
                 meta += "<meta property=\"fb:admins\" content=\"\" />";
                 ViewBag.Meta = meta;
-                ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   › Báo giá " + groupproduct.Name + "</ol> ";
+                ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   › Báo giá " + groupproduct.Name + "</ol> ";
 
                 StringBuilder schame = new StringBuilder();
                 schame.Append("<script type=\"application/ld+json\">");
@@ -114,16 +114,16 @@ namespace Geyser.Controllers.Display.Section.Baogia
                     if (listproduct[i].Sale != null && listproduct[i].Sale != "")
                         note = "<span>" + listproduct[i].Access + "</span>";
 
-                    chuoi += "<a href=\"/1/" + listproduct[i].Tag + "\" title=\"" + listproduct[i].Name + "\">" + listproduct[i].Name + " " + note + " </a>";
+                    chuoi += "<a href=\"/" + listproduct[i].Tag + ".html\" title=\"" + listproduct[i].Name + "\">" + listproduct[i].Name + " " + note + " </a>";
                     chuoi += "<span class=\"n2\">Chức năng : " + listproduct[i].NoteInfo + "</span>";
                     chuoi += "<span class=\"n3\">Trực tiếp từ Geyser Chính Hãng </span>";
                     chuoi += " </td>";
-                    chuoi += "<td class=\"Codes\"><a href=\"/Tabs/" + listproduct[i].Code + "\" title=\"" + listproduct[i].Code + "\">" + listproduct[i].Code + "</a></td>";
-                    chuoi += "<td class=\"Wans\"><a href=\"/1/" + listproduct[i].Tag + "\" title=\"" + listproduct[i].Name + "\"><img src=\"" + listproduct[i].ImageLinkThumb + "\" alt=\"" + listproduct[i].Name + "\" title=\"" + listproduct[i].Name + "\"/></a>" + listproduct[i].Time + "</td>";
+                    chuoi += "<td class=\"Codes\"> " + listproduct[i].Code + " </td>";
+                    chuoi += "<td class=\"Wans\"><a href=\"/" + listproduct[i].Tag + ".html\" title=\"" + listproduct[i].Name + "\"><img src=\"" + listproduct[i].ImageLinkThumb + "\" alt=\"" + listproduct[i].Name + "\" title=\"" + listproduct[i].Name + "\"/></a>" + listproduct[i].Time + "</td>";
                     chuoi += "<td class=\"Prices\">" + string.Format("{0:#,#}", listproduct[i].PriceSale) + "đ  <span class=\"n4\">Lắp đặt Free tại Hà Nội, Chuyển hàng toàn quốc</span></td>";
                     //chuoi += "<td class=\"Qualitys\">01</td>";
                     //chuoi += "<td class=\"SumPrices\">" + string.Format("{0:#,#}", listproduct[i].PriceSale) + "đ</td>";
-                    chuoi += "<td class=\"Images\"><a href=\"/1/" + listproduct[i].Tag + "\" title=\"" + listproduct[i].Name + "\"><img src=\"" + listproduct[i].ImageLinkThumb + "\" alt=\"" + listproduct[i].Name + "\" title=\"" + listproduct[i].Name + "\"/></a></td>";
+                    chuoi += "<td class=\"Images\"><a href=\"/" + listproduct[i].Tag + ".html\" title=\"" + listproduct[i].Name + "\"><img src=\"" + listproduct[i].ImageLinkThumb + "\" alt=\"" + listproduct[i].Name + "\" title=\"" + listproduct[i].Name + "\"/></a></td>";
                     chuoi += "</tr>";
                 }
                 ViewBag.chuoi = chuoi;

@@ -65,17 +65,17 @@ namespace Geyser.Controllers.Display
             ViewBag.dcDescription = "<meta name=\"DC.description\" content=\"" + TblNews.Description + "\" />";
             string meta = "";
             
-            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/tin-tuc/" + StringClass.NameToTag(tag) + "\" />";
+            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/tin-tuc/" + StringClass.NameToTag(tag) + "\" />";
 
             meta += "<meta itemprop=\"name\" content=\"" + TblNews.Name + "\" />";
             meta += "<meta itemprop=\"url\" content=\"" + Request.Url.ToString() + "\" />";
             meta += "<meta itemprop=\"description\" content=\"" + TblNews.Description + "\" />";
-            meta += "<meta itemprop=\"image\" content=\"http://Geyser.vn" + TblNews.Images + "\" />";
+            meta += "<meta itemprop=\"image\" content=\"http://maylocnuocgeyser.com.vn" + TblNews.Images + "\" />";
             meta += "<meta property=\"og:title\" content=\"" + TblNews.Title + "\" />";
             meta += "<meta property=\"og:type\" content=\"product\" />";
             meta += "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\" />";
-            meta += "<meta property=\"og:image\" content=\"http://Geyser.vn" + TblNews.Images + "\" />";
-            meta += "<meta property=\"og:site_name\" content=\"http://Geyser.vn\" />";
+            meta += "<meta property=\"og:image\" content=\"http://maylocnuocgeyser.com.vn" + TblNews.Images + "\" />";
+            meta += "<meta property=\"og:site_name\" content=\"http://maylocnuocgeyser.com.vn\" />";
             meta += "<meta property=\"og:description\" content=\"" + TblNews.Description + "\" />";
             meta += "<meta property=\"fb:admins\" content=\"\" />";
             ViewBag.Meta = meta;
@@ -125,7 +125,7 @@ namespace Geyser.Controllers.Display
             }
             ViewBag.result = result.ToString();
             ViewBag.favicon = " <link href=\"" + tblconfig.Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
-            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + Urlnews(TblNews.IdCate.Value) + "</ol>";
+            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + Urlnews(TblNews.IdCate.Value) + "</ol>";
             int visit = int.Parse(TblNews.Visit.ToString());
             if (visit > 0)
             {
@@ -180,7 +180,7 @@ namespace Geyser.Controllers.Display
             ViewBag.ship = ship;
             ViewBag.name = groupnews.Name;
 
-            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + Urlnews(idcate) + "</ol>";
+            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + Urlnews(idcate) + "</ol>";
             ViewBag.favicon = " <link href=\"" + db.TblConfig.First().Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
 
 

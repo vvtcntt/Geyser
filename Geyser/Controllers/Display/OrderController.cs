@@ -296,8 +296,8 @@ namespace Geyser.Controllers.Display
                 {
                     chuoi += "<tr class=\"row" + giohang.CartItem[i].Id + "\" >";
                     chuoi += "<td class=\"Name\" >";
-                    chuoi += "<a href=\"/San-pham/" + giohang.CartItem[i].Tag + "\" title=\"" + giohang.CartItem[i].Name + "\" id=\"UpdateOrd" + giohang.CartItem[i].Id + "\"><img src=\"" + giohang.CartItem[i].Images + "\" alt=\"" + giohang.CartItem[i].Name + "\" title=\"" + giohang.CartItem[i].Name + "\" /></a>";
-                    chuoi += "<a href=\"/San-pham/" + giohang.CartItem[i].Tag + "\" title=\"" + giohang.CartItem[i].Name + "\" class=\"Namepd\">" + giohang.CartItem[i].Name + "</a>";
+                    chuoi += "<a href=\"/" + giohang.CartItem[i].Tag + ".html\" title=\"" + giohang.CartItem[i].Name + "\" id=\"UpdateOrd" + giohang.CartItem[i].Id + "\"><img src=\"" + giohang.CartItem[i].Images + "\" alt=\"" + giohang.CartItem[i].Name + "\" title=\"" + giohang.CartItem[i].Name + "\" /></a>";
+                    chuoi += "<a href=\"/" + giohang.CartItem[i].Tag + ".html\" title=\"" + giohang.CartItem[i].Name + "\" class=\"Namepd\">" + giohang.CartItem[i].Name + "</a>";
                     chuoi += "<a href=\"javascript:void(0)\" title=\"\" class=\"Delete\" onclick=\"javascript:return DeleteOrder(" + giohang.CartItem[i].Id + ")\">Xóa</a>";
                     chuoi += "</td>";
                     chuoi += "<td class=\"Price\"><span>" + string.Format("{0:#,#}", giohang.CartItem[i].Price) + " vnđ</span></td>";
@@ -595,8 +595,8 @@ namespace Geyser.Controllers.Display
             {
                 chuoi += "<tr class=\"row" + giohang.CartItem[i].Id + "\" >";
                 chuoi += "<td class=\"Name\" >";
-                chuoi += "<a href=\"/San-pham/" + giohang.CartItem[i].Tag + "\" title=\"" + giohang.CartItem[i].Name + "\" id=\"UpdateOrd" + giohang.CartItem[i].Id + "\"><img src=\"" + giohang.CartItem[i].Images + "\" alt=\"" + giohang.CartItem[i].Name + "\" title=\"" + giohang.CartItem[i].Name + "\" /></a>";
-                chuoi += "<a href=\"/San-pham/" + giohang.CartItem[i].Tag + "\" title=\"" + giohang.CartItem[i].Name + "\" class=\"Namepd\">" + giohang.CartItem[i].Name + "</a>";
+                chuoi += "<a href=\"/" + giohang.CartItem[i].Tag + ".html\" title=\"" + giohang.CartItem[i].Name + "\" id=\"UpdateOrd" + giohang.CartItem[i].Id + "\"><img src=\"" + giohang.CartItem[i].Images + "\" alt=\"" + giohang.CartItem[i].Name + "\" title=\"" + giohang.CartItem[i].Name + "\" /></a>";
+                chuoi += "<a href=\"/" + giohang.CartItem[i].Tag + ".html\" title=\"" + giohang.CartItem[i].Name + "\" class=\"Namepd\">" + giohang.CartItem[i].Name + "</a>";
                 chuoi += "<a href=\"javascript:void(0)\" title=\"\" class=\"Delete\" onclick=\"javascript:return DeleteOrder(" + giohang.CartItem[i].Id + ")\">Xóa</a>";
                 chuoi += "</td>";
                 chuoi += "<td class=\"Price\"><span>" + string.Format("{0:#,#}", giohang.CartItem[i].Price) + " vnđ</span></td>";

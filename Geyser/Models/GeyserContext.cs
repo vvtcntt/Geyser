@@ -69,7 +69,9 @@ namespace Geyser.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=viglacer_geyser;Persist Security Info=True;User ID=viglacer_geyser;Password=@Vanthiep1;MultipleActiveResultSets=True");
+                //optionsBuilder.UseSqlServer("Data Source=thiepvu\\sqlexpress;Initial Catalog=Geyser;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=kangaroo_Geyser;Persist Security Info=True;User ID=kangaroo_Geyser;Password=@Vanthiep123;MultipleActiveResultSets=True");
+
             }
         }
 

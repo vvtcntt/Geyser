@@ -22,7 +22,7 @@ namespace Geyser
             routes.MapRoute("Newslist", "2/{Tag}", new { controller = "news", action = "listNews", tag = UrlParameter.Optional }, new { controller = "^n.*", action = "^listNews$" });
             routes.MapRoute("Bao-gia", "bao-gia/bao-gia-{Tag}", new { controller = "baogia", action = "index", tag = UrlParameter.Optional }, new { controller = "^b.*", action = "^index$" });
             routes.MapRoute(name: "tim-kiem", url: "tim-kiem", defaults: new { controller = "product", action = "search" });
-
+            routes.MapRoute(name: "Error", url: "Error", defaults: new { controller = "Default", action = "Error" });
             routes.MapRoute(name: "Contact", url: "Lien-he", defaults: new { controller = "contactCustom", action = "Index" });
             routes.MapRoute(name: "SearchProduct", url: "SearchProduct", defaults: new { controller = "Products", action = "SearchProduct" });
             routes.MapRoute(name: "Order", url: "gio-hang", defaults: new { controller = "Order", action = "OrderIndex" });

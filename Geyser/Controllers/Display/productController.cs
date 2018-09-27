@@ -68,14 +68,14 @@ namespace Geyser.Controllers.DisplayCustom
             ViewBag.Title = "<title>" + ProductDetail.Title + "</title>";
             ViewBag.Description = "<meta name=\"description\" content=\"" + ProductDetail.Description + "\"/>";
             ViewBag.Keyword = "<meta name=\"keywords\" content=\"" + ProductDetail.Keyword + "\" /> ";
-            ViewBag.imageog = "<meta property=\"og:image\" content=\"http://Geyser.vn" + ProductDetail.ImageLinkThumb + "\"/>";
+            ViewBag.imageog = "<meta property=\"og:image\" content=\"http://maylocnuocgeyser.com.vn" + ProductDetail.ImageLinkThumb + "\"/>";
             ViewBag.titleog = "<meta property=\"og:title\" content=\"" + ProductDetail.Title + "\"/> ";
             ViewBag.site_nameog = "<meta property=\"og:site_name\" content=\"" + ProductDetail.Name + "\"/> ";
             ViewBag.urlog = "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\"/> ";
             ViewBag.descriptionog = "<meta property=\"og:description\" content=\"" + ProductDetail.Description + "\" />";
-            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + UrlProduct(tblgroupProduct.Id) + "</ol> ";
+            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + UrlProduct(tblgroupProduct.Id) + "</ol> ";
 
-            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/" + ProductDetail.Tag + ".html\" />";
+            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/" + ProductDetail.Tag + ".html\" />";
 
             StringBuilder schame = new StringBuilder();
             schame.Append("<script type=\"application/ld+json\">");
@@ -223,51 +223,149 @@ namespace Geyser.Controllers.DisplayCustom
 
         public ActionResult productList(string tag)
         {
-            TblGroupProduct groupProduct = db.TblGroupProduct.First(p => p.Tag == tag);
-            ViewBag.name = groupProduct.Name;
-            ViewBag.headshord = groupProduct.Content;
-            int idCate = groupProduct.Id;
-            ViewBag.check = true;
-
-            var tblconfig = db.TblConfig.FirstOrDefault();
-
-            ViewBag.color = tblconfig.Color;
-            ViewBag.favicon = " <link href=\"" + tblconfig.Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
-            ViewBag.Title = "<title>" + groupProduct.Title + "</title>";
-            ViewBag.Description = "<meta name=\"description\" content=\"" + groupProduct.Description + "\"/>";
-            ViewBag.Keyword = "<meta name=\"keywords\" content=\"" + groupProduct.Keyword + "\" /> ";
-            ViewBag.imageog = "<meta property=\"og:image\" content=\"" + groupProduct.Images + "\"/>";
-            ViewBag.titleog = "<meta property=\"og:title\" content=\"" + groupProduct.Title + "\"/> ";
-            ViewBag.site_nameog = "<meta property=\"og:site_name\" content=\"" + groupProduct.Name + "\"/> ";
-            ViewBag.urlog = "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\"/> ";
-            ViewBag.descriptionog = "<meta property=\"og:description\" content=\"" + groupProduct.Description + "\" />";
-            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + UrlProduct(groupProduct.Id) + "</ol> ";
-
-            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/" + groupProduct.Tag + "\" />";
-            StringBuilder result = new StringBuilder();
-
-            var listGroupProduct = db.TblGroupProduct.Where(p => p.ParentId == idCate && p.Active == true).OrderBy(p => p.Ord).ToList();
-            if (listGroupProduct.Count > 0)
+            try
             {
-                result.Append("<div class=\"saleProduct\">");
-                int idmanu = groupProduct.Id;
-                var listIdImages = db.TblConnectImages.Where(p => p.IdCate == idmanu).Select(p => p.IdImg).ToList();
-                var listImage = db.TblImage.Where(p => p.Active == true && p.IdCate == 4 && listIdImages.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
-                for (int j = 0; j < listImage.Count; j++)
+                TblGroupProduct groupProduct = db.TblGroupProduct.First(p => p.Tag == tag);
+                ViewBag.name = groupProduct.Name;
+                ViewBag.headshord = groupProduct.Content;
+                int idCate = groupProduct.Id;
+                ViewBag.check = true;
+
+                var tblconfig = db.TblConfig.FirstOrDefault();
+
+                ViewBag.color = tblconfig.Color;
+                ViewBag.favicon = " <link href=\"" + tblconfig.Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
+                ViewBag.Title = "<title>" + groupProduct.Title + "</title>";
+                ViewBag.Description = "<meta name=\"description\" content=\"" + groupProduct.Description + "\"/>";
+                ViewBag.Keyword = "<meta name=\"keywords\" content=\"" + groupProduct.Keyword + "\" /> ";
+                ViewBag.imageog = "<meta property=\"og:image\" content=\"" + groupProduct.Images + "\"/>";
+                ViewBag.titleog = "<meta property=\"og:title\" content=\"" + groupProduct.Title + "\"/> ";
+                ViewBag.site_nameog = "<meta property=\"og:site_name\" content=\"" + groupProduct.Name + "\"/> ";
+                ViewBag.urlog = "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\"/> ";
+                ViewBag.descriptionog = "<meta property=\"og:description\" content=\"" + groupProduct.Description + "\" />";
+                ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + UrlProduct(groupProduct.Id) + "</ol> ";
+
+                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/" + groupProduct.Tag + "\" />";
+                StringBuilder result = new StringBuilder();
+
+                var listGroupProduct = db.TblGroupProduct.Where(p => p.ParentId == idCate && p.Active == true).OrderBy(p => p.Ord).ToList();
+                if (listGroupProduct.Count > 0)
                 {
-                    result.Append("<a href=\"" + listImage[j].Url + "\" title=\"" + listImage[j].Name + "\"><img src=\"" + listImage[j].Images + "\" alt=\"" + listImage[j].Name + "\" /></a>");
+                    result.Append("<div class=\"saleProduct\">");
+                    int idmanu = groupProduct.Id;
+                    var listIdImages = db.TblConnectImages.Where(p => p.IdCate == idmanu).Select(p => p.IdImg).ToList();
+                    var listImage = db.TblImage.Where(p => p.Active == true && p.IdCate == 4 && listIdImages.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
+                    for (int j = 0; j < listImage.Count; j++)
+                    {
+                        result.Append("<a href=\"" + listImage[j].Url + "\" title=\"" + listImage[j].Name + "\"><img src=\"" + listImage[j].Images + "\" alt=\"" + listImage[j].Name + "\" /></a>");
+                    }
+                    result.Append("</div>");
+                    for (int i = 0; i < listGroupProduct.Count; i++)
+                    {
+                        int idMenu = listGroupProduct[i].Id;
+                        result.Append("<div class=\"tearListProduct\">");
+
+                        result.Append("<div class=\"filter\">");
+                        result.Append("<h2 class=\"name\"><a href=\"/" + listGroupProduct[i].Tag + "\" title=\"" + listGroupProduct[i].Name + "\" style=\"color:#088ec1\">" + listGroupProduct[i].Name + " </a> </h2>");
+                        result.Append("</div>");
+                        result.Append("<div class=\"contentListProductContent\">");
+                        var listProduct = db.TblProduct.Where(p => p.Active == true && p.IdCate == idMenu).OrderBy(p => p.Ord).Take(12).ToList();
+                        for (int j = 0; j < listProduct.Count; j++)
+                        {
+                            result.Append("<div class=\"tear\">");
+                            result.Append("<div class=\"contentTear\">");
+                            float price = float.Parse(listProduct[j].Price.ToString());
+                            float pricesale = float.Parse(listProduct[j].PriceSale.ToString());
+                            float phantram = 100 - ((pricesale * 100) / price);
+                            if (listProduct[j].New == true)
+                            {
+                                result.Append(" <div class=\"sale\"> Mới 2018</div>");
+                            }
+                            else
+                            {
+                                result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
+                            }
+                            if (listProduct[j].Note != null && listProduct[j].Note != "")
+                                result.Append("<div class=\"noteTear\">" + listProduct[j].Note + "</div>");
+
+                            result.Append("<div class=\"img\">");
+                            result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\"><img src=\"" + listProduct[j].ImageLinkThumb + "\" alt=\"" + listProduct[j].Name + "\" /></a>");
+                            result.Append(" </div>");
+                            result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\" class=\"name\">" + listProduct[j].Name + "</a>");
+                            result.Append("<div class=\"boxItem\">");
+                            result.Append("<div class=\"boxPrice\">");
+                            result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProduct[j].PriceSale) + "đ</span>");
+                            result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProduct[j].Price) + "đ</span>");
+                            result.Append("</div>");
+                            result.Append("<div class=\"boxSale\">");
+                            result.Append("<a href=\"\" title=\"\"></a>");
+                            result.Append("</div>");
+                            result.Append("</div>");
+                            result.Append(" </div>");
+                            result.Append("</div>");
+                        }
+                        var listId = db.TblConnectProductToGroup.Where(p => p.Idg == idMenu).Select(p => p.Idp).ToList();
+                        var listProducts = db.TblProduct.Where(p => p.Active == true && listId.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
+                        for (int j = 0; j < listProducts.Count; j++)
+                        {
+                            result.Append("<div class=\"tear\">");
+                            result.Append("<div class=\"contentTear\">");
+                            float price = float.Parse(listProducts[j].Price.ToString());
+                            float pricesale = float.Parse(listProducts[j].PriceSale.ToString());
+                            float phantram = 100 - ((pricesale * 100) / price);
+                            if (listProducts[j].New == true)
+                            {
+                                result.Append(" <div class=\"sale\"> Mới 2018</div>");
+                            }
+                            else
+                            {
+                                result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
+                            }
+                            if (listProducts[j].Note != null && listProducts[j].Note != "")
+                                result.Append("<div class=\"noteTear\">" + listProducts[j].Note + "</div>");
+
+                            result.Append("<div class=\"img\">");
+                            result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\"><img src=\"" + listProducts[j].ImageLinkThumb + "\" alt=\"" + listProducts[j].Name + "\" /></a>");
+                            result.Append(" </div>");
+                            result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\" class=\"name\">" + listProducts[j].Name + "</a>");
+                            result.Append("<div class=\"boxItem\">");
+                            result.Append("<div class=\"boxPrice\">");
+                            result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProducts[j].PriceSale) + "đ</span>");
+                            if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
+                            {
+                                result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
+                            }
+                            result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProducts[j].Price) + "đ</span>");
+                            result.Append("</div>");
+                            result.Append("<div class=\"boxSale\">");
+                            result.Append("<a href=\"\" title=\"\"></a>");
+                            result.Append("</div>");
+                            result.Append("</div>");
+                            result.Append(" </div>");
+                            result.Append("</div>");
+                        }
+
+                        result.Append("</div>");
+                        result.Append("</div>");
+                    }
                 }
-                result.Append("</div>");
-                for (int i = 0; i < listGroupProduct.Count; i++)
+                else
                 {
-                    int idMenu = listGroupProduct[i].Id;
                     result.Append("<div class=\"tearListProduct\">");
-                    
+                    result.Append("<div class=\"saleProduct\">");
+                    int idmanu = groupProduct.Id;
+                    var listIdImages = db.TblConnectImages.Where(p => p.IdCate == idmanu).Select(p => p.IdImg).ToList();
+                    var listImage = db.TblImage.Where(p => p.Active == true && p.IdCate == 4 && listIdImages.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
+                    for (int j = 0; j < listImage.Count; j++)
+                    {
+                        result.Append("<a href=\"" + listImage[j].Url + "\" title=\"" + listImage[j].Name + "\"><img src=\"" + listImage[j].Images + "\" alt=\"" + listImage[j].Name + "\" /></a>");
+                    }
+                    result.Append("</div>");
                     result.Append("<div class=\"filter\">");
-                    result.Append("<h2 class=\"name\"><a href=\"/"+ listGroupProduct[i].Tag+ "\" title=\"" + listGroupProduct[i].Name + "\" style=\"color:#088ec1\">" + listGroupProduct[i].Name + " </a> </h2>");
+                    result.Append("<span class=\"name\" style=\"color:#088ec1\">Danh sách sản phẩm " + groupProduct.Name + " : </span>");
                     result.Append("</div>");
                     result.Append("<div class=\"contentListProductContent\">");
-                    var listProduct = db.TblProduct.Where(p => p.Active == true && p.IdCate == idMenu).OrderBy(p => p.Ord).Take(12).ToList();
+                    var listProduct = db.TblProduct.Where(p => p.Active == true && p.IdCate == idmanu).OrderBy(p => p.Ord).ToList();
                     for (int j = 0; j < listProduct.Count; j++)
                     {
                         result.Append("<div class=\"tear\">");
@@ -293,6 +391,10 @@ namespace Geyser.Controllers.DisplayCustom
                         result.Append("<div class=\"boxItem\">");
                         result.Append("<div class=\"boxPrice\">");
                         result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProduct[j].PriceSale) + "đ</span>");
+                        if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
+                        {
+                            result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
+                        }
                         result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProduct[j].Price) + "đ</span>");
                         result.Append("</div>");
                         result.Append("<div class=\"boxSale\">");
@@ -302,7 +404,7 @@ namespace Geyser.Controllers.DisplayCustom
                         result.Append(" </div>");
                         result.Append("</div>");
                     }
-                    var listId = db.TblConnectProductToGroup.Where(p => p.Idg == idMenu).Select(p => p.Idp).ToList();
+                    var listId = db.TblConnectProductToGroup.Where(p => p.Idg == idmanu).Select(p => p.Idp).ToList();
                     var listProducts = db.TblProduct.Where(p => p.Active == true && listId.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
                     for (int j = 0; j < listProducts.Count; j++)
                     {
@@ -343,213 +445,119 @@ namespace Geyser.Controllers.DisplayCustom
                         result.Append("</div>");
                     }
 
+
+
                     result.Append("</div>");
                     result.Append("</div>");
                 }
+                var listIdGroup = db.TblConnectGroupProduct.Where(p => p.Idg == idCate).Select(p => p.Idc).ToList();
+                if (listIdGroup.Count > 0)
+                {
+                    var listGroupProductChild = db.TblGroupProduct.Where(p => p.Active == true && listIdGroup.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
+                    for (int i = 0; i < listGroupProductChild.Count; i++)
+                    {
+                        int idMenu = listGroupProductChild[i].Id;
+                        result.Append("<div class=\"tearListProduct\">");
+
+                        result.Append("<div class=\"filter\">");
+                        result.Append("<h2 class=\"name\"><a href=\"/" + listGroupProductChild[i].Tag + "\" title=\"\">" + listGroupProductChild[i].Name + " </a> </h2>");
+                        result.Append("</div>");
+                        result.Append("<div class=\"contentListProductContent\">");
+                        var listProduct = db.TblProduct.Where(p => p.Active == true && p.IdCate == idMenu).OrderBy(p => p.Ord).Take(12).ToList();
+                        for (int j = 0; j < listProduct.Count; j++)
+                        {
+                            result.Append("<div class=\"tear\">");
+                            result.Append("<div class=\"contentTear\">");
+                            float price = float.Parse(listProduct[j].Price.ToString());
+                            float pricesale = float.Parse(listProduct[j].PriceSale.ToString());
+                            float phantram = 100 - ((pricesale * 100) / price);
+                            if (listProduct[j].New == true)
+                            {
+                                result.Append(" <div class=\"sale\"> Mới 2018</div>");
+                            }
+                            else
+                            {
+                                result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
+                            }
+                            if (listProduct[j].Note != null && listProduct[j].Note != "")
+                                result.Append("<div class=\"noteTear\">" + listProduct[j].Note + "</div>");
+
+                            result.Append("<div class=\"img\">");
+                            result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\"><img src=\"" + listProduct[j].ImageLinkThumb + "\" alt=\"" + listProduct[j].Name + "\" /></a>");
+                            result.Append(" </div>");
+                            result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\" class=\"name\">" + listProduct[j].Name + "</a>");
+                            result.Append("<div class=\"boxItem\">");
+                            result.Append("<div class=\"boxPrice\">");
+                            result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProduct[j].PriceSale) + "đ</span>");
+                            if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
+                            {
+                                result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
+                            }
+                            result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProduct[j].Price) + "đ</span>");
+                            result.Append("</div>");
+                            result.Append("<div class=\"boxSale\">");
+                            result.Append("<a href=\"\" title=\"\"></a>");
+                            result.Append("</div>");
+                            result.Append("</div>");
+                            result.Append(" </div>");
+                            result.Append("</div>");
+                        }
+                        var listId = db.TblConnectProductToGroup.Where(p => p.Idg == idMenu).Select(p => p.Idp).ToList();
+                        var listProducts = db.TblProduct.Where(p => p.Active == true && listId.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
+                        for (int j = 0; j < listProducts.Count; j++)
+                        {
+                            result.Append("<div class=\"tear\">");
+                            result.Append("<div class=\"contentTear\">");
+                            float price = float.Parse(listProducts[j].Price.ToString());
+                            float pricesale = float.Parse(listProducts[j].PriceSale.ToString());
+                            float phantram = 100 - ((pricesale * 100) / price);
+                            if (listProducts[j].New == true)
+                            {
+                                result.Append(" <div class=\"sale\"> Mới 2018</div>");
+                            }
+                            else
+                            {
+                                result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
+                            }
+                            if (listProducts[j].Note != null && listProducts[j].Note != "")
+                                result.Append("<div class=\"noteTear\">" + listProducts[j].Note + "</div>");
+
+                            result.Append("<div class=\"img\">");
+                            result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\"><img src=\"" + listProducts[j].ImageLinkThumb + "\" alt=\"" + listProducts[j].Name + "\" /></a>");
+                            result.Append(" </div>");
+                            result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\" class=\"name\">" + listProducts[j].Name + "</a>");
+                            result.Append("<div class=\"boxItem\">");
+                            result.Append("<div class=\"boxPrice\">");
+                            result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProducts[j].PriceSale) + "đ</span>");
+                            if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
+                            {
+                                result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
+                            }
+                            result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProducts[j].Price) + "đ</span>");
+                            result.Append("</div>");
+                            result.Append("<div class=\"boxSale\">");
+                            result.Append("<a href=\"\" title=\"\"></a>");
+                            result.Append("</div>");
+                            result.Append("</div>");
+                            result.Append(" </div>");
+                            result.Append("</div>");
+                        }
+
+                        result.Append("</div>");
+                        result.Append("</div>");
+                    }
+
+
+                }
+                ViewBag.result = result.ToString();
+
             }
-            else
+            catch (Exception ex)
             {
-                result.Append("<div class=\"tearListProduct\">");
-                result.Append("<div class=\"saleProduct\">");
-                int idmanu = groupProduct.Id;
-                var listIdImages = db.TblConnectImages.Where(p => p.IdCate == idmanu).Select(p => p.IdImg).ToList();
-                var listImage = db.TblImage.Where(p => p.Active == true && p.IdCate == 4 && listIdImages.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
-                for (int j = 0; j < listImage.Count; j++)
-                {
-                    result.Append("<a href=\"" + listImage[j].Url + "\" title=\"" + listImage[j].Name + "\"><img src=\"" + listImage[j].Images + "\" alt=\"" + listImage[j].Name + "\" /></a>");
-                }
-                result.Append("</div>");
-                result.Append("<div class=\"filter\">");
-                result.Append("<span class=\"name\" style=\"color:#088ec1\">Danh sách sản phẩm " + groupProduct.Name + " : </span>");
-                result.Append("</div>");
-                result.Append("<div class=\"contentListProductContent\">");
-                var listProduct = db.TblProduct.Where(p => p.Active == true && p.IdCate == idmanu).OrderBy(p => p.Ord).ToList();
-                for (int j = 0; j < listProduct.Count; j++)
-                {
-                    result.Append("<div class=\"tear\">");
-                    result.Append("<div class=\"contentTear\">");
-                    float price = float.Parse(listProduct[j].Price.ToString());
-                    float pricesale = float.Parse(listProduct[j].PriceSale.ToString());
-                    float phantram = 100 - ((pricesale * 100) / price);
-                    if (listProduct[j].New == true)
-                    {
-                        result.Append(" <div class=\"sale\"> Mới 2018</div>");
-                    }
-                    else
-                    {
-                        result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
-                    }
-                    if (listProduct[j].Note != null && listProduct[j].Note != "")
-                        result.Append("<div class=\"noteTear\">" + listProduct[j].Note + "</div>");
-
-                    result.Append("<div class=\"img\">");
-                    result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\"><img src=\"" + listProduct[j].ImageLinkThumb + "\" alt=\"" + listProduct[j].Name + "\" /></a>");
-                    result.Append(" </div>");
-                    result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\" class=\"name\">" + listProduct[j].Name + "</a>");
-                    result.Append("<div class=\"boxItem\">");
-                    result.Append("<div class=\"boxPrice\">");
-                    result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProduct[j].PriceSale) + "đ</span>");
-                    if(listProduct[j].PriceNote!=null && listProduct[j].PriceNote!="")
-                    {
-                        result.Append("<span class=\"priceNotes\">"+ listProduct[j].PriceNote + "</span>");
-                    }
-                    result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProduct[j].Price) + "đ</span>");
-                    result.Append("</div>");
-                    result.Append("<div class=\"boxSale\">");
-                    result.Append("<a href=\"\" title=\"\"></a>");
-                    result.Append("</div>");
-                    result.Append("</div>");
-                    result.Append(" </div>");
-                    result.Append("</div>");
-                }
-                var listId = db.TblConnectProductToGroup.Where(p => p.Idg == idmanu).Select(p => p.Idp).ToList();
-                var listProducts = db.TblProduct.Where(p => p.Active == true && listId.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
-                for (int j = 0; j < listProducts.Count; j++)
-                {
-                    result.Append("<div class=\"tear\">");
-                    result.Append("<div class=\"contentTear\">");
-                    float price = float.Parse(listProducts[j].Price.ToString());
-                    float pricesale = float.Parse(listProducts[j].PriceSale.ToString());
-                    float phantram = 100 - ((pricesale * 100) / price);
-                    if (listProducts[j].New == true)
-                    {
-                        result.Append(" <div class=\"sale\"> Mới 2018</div>");
-                    }
-                    else
-                    {
-                        result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
-                    }
-                    if (listProducts[j].Note != null && listProducts[j].Note != "")
-                        result.Append("<div class=\"noteTear\">" + listProducts[j].Note + "</div>");
-
-                    result.Append("<div class=\"img\">");
-                    result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\"><img src=\"" + listProducts[j].ImageLinkThumb + "\" alt=\"" + listProducts[j].Name + "\" /></a>");
-                    result.Append(" </div>");
-                    result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\" class=\"name\">" + listProducts[j].Name + "</a>");
-                    result.Append("<div class=\"boxItem\">");
-                    result.Append("<div class=\"boxPrice\">");
-                    result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProducts[j].PriceSale) + "đ</span>");
-                    if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
-                    {
-                        result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
-                    }
-                    result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProducts[j].Price) + "đ</span>");
-                    result.Append("</div>");
-                    result.Append("<div class=\"boxSale\">");
-                    result.Append("<a href=\"\" title=\"\"></a>");
-                    result.Append("</div>");
-                    result.Append("</div>");
-                    result.Append(" </div>");
-                    result.Append("</div>");
-                }
-
-
-
-                result.Append("</div>");
-                result.Append("</div>");
+                return Redirect("/error");
             }
-            var listIdGroup = db.TblConnectGroupProduct.Where(p => p.Idg == idCate).Select(p => p.Idc).ToList();
-            if(listIdGroup.Count>0)
-            {
-                var listGroupProductChild = db.TblGroupProduct.Where(p => p.Active == true && listIdGroup.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
-                for (int i = 0; i < listGroupProductChild.Count; i++)
-                {
-                    int idMenu = listGroupProductChild[i].Id;
-                    result.Append("<div class=\"tearListProduct\">");
-
-                    result.Append("<div class=\"filter\">");
-                    result.Append("<h2 class=\"name\"><a href=\"/" + listGroupProductChild[i].Tag + "\" title=\"\">" + listGroupProductChild[i].Name + " </a> </h2>");
-                    result.Append("</div>");
-                    result.Append("<div class=\"contentListProductContent\">");
-                    var listProduct = db.TblProduct.Where(p => p.Active == true && p.IdCate == idMenu).OrderBy(p => p.Ord).Take(12).ToList();
-                    for (int j = 0; j < listProduct.Count; j++)
-                    {
-                        result.Append("<div class=\"tear\">");
-                        result.Append("<div class=\"contentTear\">");
-                        float price = float.Parse(listProduct[j].Price.ToString());
-                        float pricesale = float.Parse(listProduct[j].PriceSale.ToString());
-                        float phantram = 100 - ((pricesale * 100) / price);
-                        if (listProduct[j].New == true)
-                        {
-                            result.Append(" <div class=\"sale\"> Mới 2018</div>");
-                        }
-                        else
-                        {
-                            result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
-                        }
-                        if (listProduct[j].Note != null && listProduct[j].Note != "")
-                            result.Append("<div class=\"noteTear\">" + listProduct[j].Note + "</div>");
-
-                        result.Append("<div class=\"img\">");
-                        result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\"><img src=\"" + listProduct[j].ImageLinkThumb + "\" alt=\"" + listProduct[j].Name + "\" /></a>");
-                        result.Append(" </div>");
-                        result.Append("<a href=\"/" + listProduct[j].Tag + ".html\" title=\"" + listProduct[j].Name + "\" class=\"name\">" + listProduct[j].Name + "</a>");
-                        result.Append("<div class=\"boxItem\">");
-                        result.Append("<div class=\"boxPrice\">");
-                        result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProduct[j].PriceSale) + "đ</span>");
-                        if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
-                        {
-                            result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
-                        }
-                        result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProduct[j].Price) + "đ</span>");
-                        result.Append("</div>");
-                        result.Append("<div class=\"boxSale\">");
-                        result.Append("<a href=\"\" title=\"\"></a>");
-                        result.Append("</div>");
-                        result.Append("</div>");
-                        result.Append(" </div>");
-                        result.Append("</div>");
-                    }
-                    var listId = db.TblConnectProductToGroup.Where(p => p.Idg == idMenu).Select(p => p.Idp).ToList();
-                    var listProducts = db.TblProduct.Where(p => p.Active == true && listId.Contains(p.Id)).OrderBy(p => p.Ord).ToList();
-                    for (int j = 0; j < listProducts.Count; j++)
-                    {
-                        result.Append("<div class=\"tear\">");
-                        result.Append("<div class=\"contentTear\">");
-                        float price = float.Parse(listProducts[j].Price.ToString());
-                        float pricesale = float.Parse(listProducts[j].PriceSale.ToString());
-                        float phantram = 100 - ((pricesale * 100) / price);
-                        if (listProducts[j].New == true)
-                        {
-                            result.Append(" <div class=\"sale\"> Mới 2018</div>");
-                        }
-                        else
-                        {
-                            result.Append(" <div class=\"sale\">" + Convert.ToInt32(phantram) + "%</div>");
-                        }
-                        if (listProducts[j].Note != null && listProducts[j].Note != "")
-                            result.Append("<div class=\"noteTear\">" + listProducts[j].Note + "</div>");
-
-                        result.Append("<div class=\"img\">");
-                        result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\"><img src=\"" + listProducts[j].ImageLinkThumb + "\" alt=\"" + listProducts[j].Name + "\" /></a>");
-                        result.Append(" </div>");
-                        result.Append("<a href=\"/" + listProducts[j].Tag + ".html\" title=\"" + listProducts[j].Name + "\" class=\"name\">" + listProducts[j].Name + "</a>");
-                        result.Append("<div class=\"boxItem\">");
-                        result.Append("<div class=\"boxPrice\">");
-                        result.Append("<span class=\"priceSale\">" + string.Format("{0:#,#}", listProducts[j].PriceSale) + "đ</span>");
-                        if (listProduct[j].PriceNote != null && listProduct[j].PriceNote != "")
-                        {
-                            result.Append("<span class=\"priceNotes\">" + listProduct[j].PriceNote + "</span>");
-                        }
-                        result.Append("<span class=\"price\">" + string.Format("{0:#,#}", listProducts[j].Price) + "đ</span>");
-                        result.Append("</div>");
-                        result.Append("<div class=\"boxSale\">");
-                        result.Append("<a href=\"\" title=\"\"></a>");
-                        result.Append("</div>");
-                        result.Append("</div>");
-                        result.Append(" </div>");
-                        result.Append("</div>");
-                    }
-
-                    result.Append("</div>");
-                    result.Append("</div>");
-                }
-
-
-            }
-            ViewBag.result = result.ToString();
-
             return View();
+
         }
 
         public ActionResult productTag(string tag)
@@ -602,12 +610,12 @@ namespace Geyser.Controllers.DisplayCustom
                 meta += "<meta property=\"og:type\" content=\"product\" />";
                 meta += "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\" />";
                 meta += "<meta property=\"og:image\" content=\"\" />";
-                meta += "<meta property=\"og:site_name\" content=\"http://Geyser.vn\" />";
+                meta += "<meta property=\"og:site_name\" content=\"http://maylocnuocgeyser.com.vn\" />";
                 meta += "<meta property=\"og:description\" content=\"" + name + "\" />";
                 meta += "<meta property=\"fb:admins\" content=\"\" />";
                 ViewBag.Meta = meta;
 
-                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/tag/" + tag + "\" />";
+                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/tag/" + tag + "\" />";
                 result.Append("<div class=\"tearListProduct\">");
                 result.Append("<div class=\"filter\">");
                 result.Append("<h1 class=\"name\">   " + name + "   </h1>");
@@ -654,7 +662,7 @@ namespace Geyser.Controllers.DisplayCustom
                 result.Append("</div>");
                 result.Append("</div>");
                 ViewBag.result = result.ToString();
-                ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + name + "</ol> ";
+                ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›" + name + "</ol> ";
                 return View(listProduct);
             }
             else
@@ -670,7 +678,7 @@ namespace Geyser.Controllers.DisplayCustom
                 ViewBag.dcTitle = "<meta name=\"DC.title\" content=\"" + title + "\" />";
                 ViewBag.Description = "<meta name=\"description\" content=\"Danh sách sản phẩm " + description + "\"/>";
                 ViewBag.Keyword = "<meta name=\"keywords\" content=\"" + tag + "\" /> ";
-                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/tag/" + tag + "\" />";
+                ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/tag/" + tag + "\" />";
                 result.Append("<div class=\"tearListProduct\">");
                 result.Append("<div class=\"filter\">");
                 result.Append("<h1 class=\"name\">   " + tag + "   </h1>");
@@ -701,7 +709,7 @@ namespace Geyser.Controllers.DisplayCustom
             ViewBag.dcTitle = "<meta name=\"DC.title\" content=\"" + tag + "\" />";
             ViewBag.Description = "<meta name=\"description\" content=\"Danh sách sản phẩm " + tag + "\"/>";
             ViewBag.Keyword = "<meta name=\"keywords\" content=\"" + tag + "\" /> ";
-            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/search/" + tag + "\" />";
+            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/search/" + tag + "\" />";
             string meta = "";
             meta += "<meta itemprop=\"name\" content=\"" + tag + "\" />";
             meta += "<meta itemprop=\"url\" content=\"" + Request.Url.ToString() + "\" />";
@@ -711,7 +719,7 @@ namespace Geyser.Controllers.DisplayCustom
             meta += "<meta property=\"og:type\" content=\"product\" />";
             meta += "<meta property=\"og:url\" content=\"" + Request.Url.ToString() + "\" />";
             meta += "<meta property=\"og:image\" content=\"\" />";
-            meta += "<meta property=\"og:site_name\" content=\"http://Geyser.vn\" />";
+            meta += "<meta property=\"og:site_name\" content=\"http://maylocnuocgeyser.com.vn\" />";
             meta += "<meta property=\"og:description\" content=\"" + tag + "\" />";
             meta += "<meta property=\"fb:admins\" content=\"\" />";
             ViewBag.Meta = meta;
@@ -761,7 +769,7 @@ namespace Geyser.Controllers.DisplayCustom
             result.Append("</div>");
             result.Append("</div>");
             ViewBag.result = result.ToString();
-            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://Geyser.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›Bạn đang tìm kiếm : " + tag + "</ol> ";
+            ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›Bạn đang tìm kiếm : " + tag + "</ol> ";
 
             return View(listProduct);
         }

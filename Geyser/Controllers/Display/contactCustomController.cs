@@ -35,7 +35,7 @@ namespace Geyser.Controllers.DisplayCustom
                 ViewBag.mobile = TblConfig.MobileIn;
                 ViewBag.logo = TblConfig.Logo;
                 ViewBag.email = TblConfig.Email;
-                ViewBag.website = "Geyser.vn";
+                ViewBag.website = "maylocnuocgeyser.com.vn";
                  ViewBag.Title = "<title>Liên hệ Geyser Chính Hãng</title>";
                 ViewBag.Description = "<meta name=\"description\" content=\"Liên hệ địa chỉ Geyser chính hãng tại nhà dành cho khách hàng Việt Nam\"/>";
                 ViewBag.Keyword = "<meta name=\"keywords\" content=\"Geyser chính hãng\" /> ";

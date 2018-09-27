@@ -13,13 +13,13 @@ namespace Geyser.Controllers.DisplayCustom
         // GET: manufactures
         public ActionResult Index(string tag)
         {
-             var tblconfig = db.TblConfig.FirstOrDefault();
-              ViewBag.Title = "<title>" + tblconfig.Title + "</title>";
+            var tblconfig = db.TblConfig.FirstOrDefault();
+            ViewBag.Title = "<title>" + tblconfig.Title + "</title>";
             ViewBag.Description = "<meta name=\"description\" content=\"" + tblconfig.Description + "\"/>";
             ViewBag.Keyword = "<meta name=\"keywords\" content=\"" + tblconfig.Name + "\" /> ";
             Session["idManu"] = tblconfig.Id;
             ViewBag.h1 = "<h1 class=\"h1\">"+tblconfig.Title+"</h1>";
-            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://Geyser.vn/\" />";
+            ViewBag.canonical = "<link rel=\"canonical\" href=\"http://maylocnuocgeyser.com.vn/\" />";
             ViewBag.favicon = " <link href=\"" + tblconfig.Favicon + "\" rel=\"icon\" type=\"image/x-icon\" />";
             return View();
         }
@@ -219,6 +219,10 @@ namespace Geyser.Controllers.DisplayCustom
                 ViewBag.result = result;
             
             return PartialView();
+        }
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

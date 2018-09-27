@@ -9,7 +9,7 @@ namespace Geyser.Models
 {
     public class clsSitemap
     {
-          static string urlparent = "http://Geyser.vn/";
+          static string urlparent = "http://maylocnuocgeyser.com.vn/";
         public static void CreateSitemap(string urls, string ids,string types)
         {
 

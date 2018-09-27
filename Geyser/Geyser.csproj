@@ -1459,7 +1459,9 @@
     <Content Include="Scripts\Tabs.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="sitemap.xml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1602,6 +1604,7 @@
     <Content Include="Views\Shared\_LayoutDefault.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Default\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
