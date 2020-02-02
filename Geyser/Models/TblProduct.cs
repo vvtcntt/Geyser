@@ -18,6 +18,8 @@ namespace Geyser.Models
         public string ImageLinkDetail { get; set; }
         public double? Price { get; set; }
         public double? PriceSale { get; set; }
+        public double? PriceGift { get; set; }
+        
         public bool? Vat { get; set; }
         public string Warranty { get; set; }
         public string Address { get; set; }

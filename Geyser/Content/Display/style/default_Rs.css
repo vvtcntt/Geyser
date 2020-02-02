@@ -64,4 +64,53 @@
  #menuMobile{display:block}
     #imageFooter img{width:100%; margin:5px 0px}
 	#MenuFooter{display:none}
+    #leftContentFeedback {
+        width: 100%
+    }
+
+    #rightContentFeedback {
+        width: 100%
+    }
+
+    #contentFeedback textarea {
+        width: 100%
+    }
+
+    #contentFeedback #txtName {
+        width: 100%;
+        margin: 5px 0px;
+        height: 30px
+    }
+
+    #contentFeedback #txtEmail {
+        width: 100%;
+        margin: 5px 0px;
+        height: 30px
+    }
+
+    #listFeedback .itemFb .contentItemFb .leftIcon {
+        width: 15%
+    }
+
+        #listFeedback .itemFb .contentItemFb .leftIcon i {
+            font-size: 40px
+        }
+
+    .rightContent {
+        width: 82%
+    }
+
+    #btnSubmitFeedback {
+        margin: 2px 0px;
+        width: 100%
+    }
+
+    #btnSubmitFeedbackfb {
+        margin: 0px 0px;
+        width: 100%
+    }
+
+    #listFeedback .itemFb .replay {
+        margin-left: 15%
+    }
 	}

@@ -1,13 +1,13 @@
-﻿using Geyser.Models;
+﻿using Geyser.models;
 using Geyser.Models;
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Geyser.Controllers.DisplayCustom
+namespace Geyser.Controllers.Display
 {
     public class productController : Controller
     {
@@ -217,6 +217,88 @@ namespace Geyser.Controllers.DisplayCustom
             result.Append("</div>");
             ViewBag.resultLienquan = result.ToString();
             #endregion
+
+            StringBuilder resultfb = new StringBuilder();
+            StringBuilder schemaResult = new StringBuilder();
+            var listFeedback = db.TblFeedback.Where(p => p.Active == true && p.IdC == id && p.IdParent == null && p.Type == 1).OrderByDescending(p => p.DateCreate).ToList();
+            schemaResult.Append(" <script type=\"application/ld+json\">");
+
+            schemaResult.Append("{");
+
+            schemaResult.Append(" \"@context\": \"https://schema.org\",");
+            schemaResult.Append(" \"@type\": \"FAQPage\",");
+            schemaResult.Append(" \"mainEntity\": ");
+            schemaResult.Append(" [");
+            int count = listFeedback.Count;
+            foreach (var item in listFeedback)
+            {
+                count -= 1;
+                resultfb.Append(" <div class=\"itemFb\">");
+                resultfb.Append("<div class=\"contentItemFb\">");
+                resultfb.Append("<div class=\"leftIcon\">");
+                resultfb.Append("<i class=\"fas fa-user-tie\"></i>");
+                resultfb.Append("</div>");
+                resultfb.Append("<div class=\"rightContent\">");
+                resultfb.Append("<div class=\"cm" + item.Id + "\">" + item.Content + " </div>");
+                int idLikes = 0;
+                if (db.TblLike.FirstOrDefault(p => p.IdC == item.Id) != null)
+                {
+                    idLikes = int.Parse(db.TblLike.FirstOrDefault(p => p.IdC == item.Id).Like.ToString());
+                }
+                resultfb.Append("<p class=\"account\"><a class=\"rp\" href=\"#txtfeedback\" title=\"" + item.Id + "\"><i class=\"fas fa-reply\"></i> Trả lời</a> <a href=\"#\" title=\"" + item.Id + "\" class=\"like" + item.Id + "\" onclick=\"javascript:return Likes(" + item.Id + "); \"><i class=\"far fa-thumbs-up\" ></i> Like (" + idLikes + ")</a> Gửi bởi <span>" + item.Name + " </span><samp>vào lúc</samp> <time>" + item.DateCreate + "</time></p>");
+                resultfb.Append("</div>");
+                resultfb.Append("</div>");
+                int idParentfb = item.Id;
+
+                if (item.Priority == true)
+                {
+                    schemaResult.Append(" {");
+                    schemaResult.Append(" \"@type\": \"Question\",");
+                    schemaResult.Append("\"name\": \"" + item.Content + "\",");
+                    var listFeedbackChilds = db.TblFeedback.Where(p => p.Active == true && p.IdParent == idParentfb).OrderByDescending(p => p.DateCreate).Take(1).ToList();
+                    if (listFeedbackChilds.Count > 0)
+                    {
+                        schemaResult.Append(" \"acceptedAnswer\": ");
+                        schemaResult.Append("{");
+                        schemaResult.Append(" \"@type\": \"Answer\",");
+                        schemaResult.Append("\"text\": \"" + listFeedbackChilds[0].Content + "\"");
+                        schemaResult.Append("}");
+                    }
+                    if (count == 0)
+                        schemaResult.Append(" } ");
+                    else
+                    {
+                        schemaResult.Append(" }, ");
+                    }
+
+
+                }
+                var listFeedbackChild = db.TblFeedback.Where(p => p.Active == true && p.IdParent == idParentfb).OrderByDescending(p => p.DateCreate).ToList();
+                if (listFeedbackChild.Count > 0)
+                {
+                    foreach (var itemChild in listFeedbackChild)
+                    {
+                        resultfb.Append("<div class=\"replay\">");
+                        resultfb.Append("<div class=\"cm" + itemChild.Id + "\">" + itemChild.Content + " </div>");
+                        int idLike = 0;
+                        if (db.TblLike.FirstOrDefault(p => p.IdC == itemChild.Id) != null)
+                        {
+                            idLike = int.Parse(db.TblLike.FirstOrDefault(p => p.IdC == itemChild.Id).Like.ToString());
+                        }
+                        resultfb.Append("<p class=\"account\"><a class=\"rp\" href=\"#txtfeedback\" title=\"" + item.Id + "\"><i class=\"fas fa-reply\"></i> Trả lời</a> <a href=\"#\" class=\"like" + itemChild.Id + "\" onclick=\"javascript:return Likes(" + itemChild.Id + "); \" title=\"" + itemChild.Id + "\" ><i class=\"far fa-thumbs-up\"></i> Like (" + idLike + ")</a> Gửi bởi <span>" + itemChild.Name + " </span><samp>vào lúc</samp> <time>" + itemChild.DateCreate + "</time></p>");
+                        resultfb.Append("</div>");
+                    }
+
+                }
+
+
+                resultfb.Append("</div>");
+            }
+            schemaResult.Append("]");
+            schemaResult.Append(" }");
+            schemaResult.Append(" </script>");
+            ViewBag.schema = schemaResult.ToString();
+            ViewBag.resultFeedback = resultfb.ToString();
 
             return View(ProductDetail);
         }
@@ -772,6 +854,78 @@ namespace Geyser.Controllers.DisplayCustom
             ViewBag.nUrl = "<ol itemscope itemtype=\"http://schema.org/BreadcrumbList\">   <li itemprop=\"itemListElement\" itemscope  itemtype=\"http://schema.org/ListItem\"> <a itemprop=\"item\" href=\"http://maylocnuocgeyser.com.vn\">  <span itemprop=\"name\">Trang chủ</span></a> <meta itemprop=\"position\" content=\"1\" />  </li>   ›Bạn đang tìm kiếm : " + tag + "</ol> ";
 
             return View(listProduct);
+        }
+         public PartialViewResult formRequest()
+        {
+            return PartialView();
+        }
+        public ActionResult likes(int id)
+        {
+            int like = 0;
+            TblLike dbLike = db.TblLike.FirstOrDefault(p => p.IdC == id);
+            if (dbLike == null)
+            {
+                TblLike tbllike = new TblLike();
+                tbllike.IdC = id;
+                tbllike.Like = 1;
+                like = 1;
+                db.TblLike.Add(tbllike);
+                db.SaveChanges();
+            }
+            else
+            {
+                dbLike.Like += 1;
+                db.SaveChanges();
+                like = int.Parse(dbLike.Like.ToString());
+            }
+
+            return Json(new { like = like });
+        }
+
+        public  ActionResult command(FormCollection frmconnection)
+        {
+            string content = frmconnection["txtfeedback"];
+            string email = frmconnection["txtEmail"];
+            string name = frmconnection["txtName"];
+            string idParent = frmconnection["txtId"];
+            string idC = frmconnection["txtIdc"];
+            string nameFb = frmconnection["txtNameFb"];
+            string tag = frmconnection["txtTag"];
+            TblFeedback feedback = new TblFeedback();
+            if (idParent != "" && idParent != null)
+            {
+                feedback.Name = name;
+                feedback.Email = email;
+                feedback.Content = content;
+                feedback.IdParent = int.Parse(idParent);
+                feedback.Active = true;
+                feedback.DateCreate = DateTime.Now;
+                feedback.Type = 1;
+                feedback.Url = "/" + tag + ".html";
+                feedback.IdC = int.Parse(idC);
+                db.TblFeedback.Add(feedback);
+                db.SaveChanges();
+
+            }
+            else
+            {
+                feedback.Name = name;
+                feedback.Email = email;
+                feedback.Content = content;
+                feedback.Active = true;
+                feedback.Type = 1;
+                feedback.Url = "/" + tag + ".html";
+
+                feedback.IdC = int.Parse(idC);
+
+                feedback.DateCreate = DateTime.Now;
+                db.TblFeedback.Add(feedback);
+                db.SaveChanges();
+            }
+            sendMail.sendmail("Một phản hổi mới trên ", nameFb, "https://maylocnuocgeyser.com.vn/" + tag + ".html"
+                , name, email, "Online", "Online", email, content);
+
+            return Redirect("/" + tag + ".html");
         }
     }
 }

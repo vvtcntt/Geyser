@@ -5,8 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Geyser.Models;
-using Geyser.Models;
-namespace Geyser.Controllers.DisplayCustom
+  namespace Geyser.Controllers.DisplayCustom
 {
     public class footerCustomController : Controller
     {
@@ -88,15 +87,36 @@ namespace Geyser.Controllers.DisplayCustom
                 ViewBag.results = Chuoiimg.ToString();
                 ViewBag.codeChat = TblConfig.CodeChat;
 
-            var listImage = db.TblImage.Where(p => p.IdCate == 10).ToList();
+            var listImage = db.TblImage.Where(p => p.IdCate == 5).ToList();
             StringBuilder resultImages = new StringBuilder();
             for(int i=0;i<listImage.Count;i++)
             {
                 resultImages.Append("<img src=\""+listImage[i].Images+"\" alt=\""+listImage[i].Name+"\" />");
             }
             ViewBag.resultImages = resultImages.ToString();
-
             return PartialView(db.TblConfig.FirstOrDefault());
         }
+        public ActionResult CommandCall(string phone, string content, string url)
+        {
+            string result = "";
+            if (phone != null && phone != "")
+            {
+
+                sendMail.sendmail("Một yêu cầu gọi điện ", phone, url
+              , phone, "lienhe@maylocnuocgeyser.com.vn", "", phone, phone, content);
+                result = "Bạn đã yêu cầu gọi điện thành công, bạn vui lòng cầm điện thoại trong khoảng 1-2 phút, chúng tôi sẽ liên hệ với bạn ngay !";
+            }
+
+            //}
+            //catch(Exception ex)
+            //{
+            //    result = "Rất tiếc hiện chúng tôi không thể gọi cho bạn được, bạn có thể liên hệ qua hotline ở trên !" + ex;
+            //}
+
+
+            return Json(new { result = result });
+
+        }
+
     }
 }

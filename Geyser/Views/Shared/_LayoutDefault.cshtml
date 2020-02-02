@@ -12,6 +12,8 @@
     @Html.Raw(ViewBag.canonical)
     @Html.Raw(ViewBag.Meta)
     @Html.Raw(ViewBag.favicon)
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
     @{Html.RenderAction("partialdefault", "default");}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
@@ -120,12 +122,12 @@
                 });
 
             return false;
-        } 
+        }
         function CreateOrderMobile(id) {
             var quanlity = 1;
             $.post("/Order/OrderAdd", { "idp": id, "ord": quanlity },
                 function (data) {
-                    
+
                 });
 
             return false;
@@ -182,6 +184,39 @@
             $("#lean_overlay").css("display", "none");
 
         }
+    </script>
+    <script>
+        function Senmail() {
+            var content = $("#request_content").val();
+            var phone = $("#request_phone").val();
+            var url = $("#txtUrl").val();
+            var kiemtra = 0;
+            if (content.length < 10) {
+                kiemtra = 1;
+                alert("Bạn vui lòng nhập nội dung yêu cầu !");
+                $(".result").html("Bạn vui lòng nhập nội dung yêu cầu");
+            }
+            if (phone.length < 10) {
+                kiemtra = 1;
+                alert("Bạn vui lòng nhập số điện thoại !");
+                $(".result").html("Bạn vui lòng nhập số điện thoại của bạn !");
+            }
+            if (kiemtra != 1) {
+                $(".send-go").append("<i class=\"fa fa-refresh fa-spin\"></i>");
+                $(".result").append("<i class=\"fa fa-spinner fa-pulse\"></i>");
+
+                $.post("/footercustom/CommandCall", { "phone": phone, "content": content, "url": url },
+                    function (data) {
+                        $(".result").html(data.result);
+                        $(".loading").html("");
+                        $("#request_content").val() = "";
+                        $("#request_phone").val() = "";
+                    });
+            }
+
+            return false;
+        }
+
     </script>
 </body>
 </html>

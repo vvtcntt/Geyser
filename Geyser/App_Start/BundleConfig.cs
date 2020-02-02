@@ -46,6 +46,7 @@ namespace Geyser
   "~/Content/Display/style/contact_Rs.css",
       "~/Content/Display/style/baogia.css",
   "~/Content/Display/style/baogia_rs.css",
+    "~/Content/Display/style/feedback.css",
      "~/Content/Display/style/jquery.mmenu.all.css"
               ));
             BundleTable.EnableOptimizations = true;

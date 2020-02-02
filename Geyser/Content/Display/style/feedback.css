@@ -1,0 +1,406 @@
+﻿#feedback {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 0px
+}
+
+    #feedback .name {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 5px 0px;
+        display: block
+    }
+
+#contentFeedback {
+    width: 100%;
+    height: auto;
+    margin: 0px
+}
+
+#leftContentFeedback {
+    width: 70%;
+    float: left
+}
+
+#cmfacebook {
+    display: none;
+    width: 100%;
+    height: auto;
+    float: left
+}
+
+#cmaccount {
+    width: 100%;
+    height: auto;
+    float: left
+}
+
+#contentFeedback textarea {
+    width: 97%;
+    float: left;
+    margin: 5px 0px;
+    text-indent: 10px;
+    padding: 5px
+}
+
+#contentFeedback #txtName {
+    width: 42%;
+    height: 25px;
+    float: left;
+    margin-right: 1%;
+    text-indent: 10px
+}
+
+#contentFeedback #txtEmail {
+    width: 54%;
+    height: 25px;
+    float: left;
+    text-indent: 10px
+}
+
+#btnSubmitFeedback {
+    padding: 5px 10px;
+    background: #4d4d4d;
+    color: #fff;
+    border: none;
+    width: 196px;
+    float: left;
+    height: 31px;
+    margin-left: 10px;
+    margin-top: 5px
+}
+
+#btnSubmitFeedbackfb {
+    padding: 5px 10px;
+    background: #4267b2;
+    color: #fff;
+    border: none;
+    float: left;
+    height: 31px;
+    margin-left: 10px;
+    margin-top: 5px
+}
+
+#rightContentFeedback {
+    width: 30%;
+    float: left
+}
+
+    #rightContentFeedback p {
+        font-style: italic;
+        font-size: 12px;
+        margin: 5px 10px;
+        display: block;
+        width: 100%;
+        color: #f00
+    }
+
+#note {
+    width: 100%;
+    height: auto;
+    float: left
+}
+
+#listFeedback {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 0px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e5e5
+}
+
+    #listFeedback .itemFb {
+        width: 100%;
+        height: auto;
+        float: left;
+        margin: 5px 0px;
+        border-bottom: 1px dashed #e5e5e5
+    }
+
+        #listFeedback .itemFb .contentItemFb {
+            width: 100%;
+            height: auto;
+            float: left
+        }
+
+            #listFeedback .itemFb .contentItemFb .leftIcon {
+                width: 8%;
+                height: 100%;
+                float: left;
+                margin: 0px
+            }
+
+                #listFeedback .itemFb .contentItemFb .leftIcon i {
+                    font-size: 50px;
+                    display: block;
+                    color: #bebebe
+                }
+
+                #listFeedback .itemFb .contentItemFb .leftIcon span {
+                    text-align: center;
+                    color: #333;
+                    margin: 5px 0px;
+                    display: block;
+                    font-size: 12px;
+                    font-weight: bold;
+                    line-height: 17px
+                }
+
+.rightContent {
+    width: 90%;
+    float: left;
+    font-size: 13px;
+    line-height: 20px
+}
+
+#listFeedback .itemFb .account {
+    display: block;
+    margin: 5px 0px;
+    color: #838383;
+    font-style: italic;
+}
+
+    #listFeedback .itemFb .account samp {
+        font-weight: normal;
+        font-style: italic
+    }
+
+    #listFeedback .itemFb .account span {
+        font-weight: bold
+    }
+
+#listFeedback .itemFb .replay {
+    margin: 5px 0px 5px 10%;
+    font-size: 13px;
+    line-height: 20px;
+    float: left;
+    padding: 5px 5px 5px 10px;
+    background: #f4f4f4;
+    border-top: 1px solid #ebebec
+}
+
+#listFeedback .itemFb .account a {
+    color: #0900c8;
+    margin-right: 10px;
+    font-style: normal
+}
+
+.hide {
+    display: none !important
+}
+
+.show {
+    display: block !important
+}
+
+#orderNow {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 0px;
+    font-family: "Open Sans",sans-serif !important
+}
+
+    #orderNow #btnBuy {
+        width: 100%;
+        height: auto;
+        border: none;
+        background: #0077c0;
+        border-radius: 5px;
+        text-align: center;
+        padding: 4px 0px;
+        float: left;
+        margin-top: 5px
+    }
+
+    #orderNow a .note1 {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 1px 0px;
+        color: #FFF;
+        text-transform: uppercase
+    }
+
+    #orderNow a .note2 {
+        display: block;
+        padding-bottom: 5px;
+        font-size: 12px;
+        color: #FFF
+    }
+
+    #orderNow a:hover {
+        background: #ff6000
+    }
+
+    #orderNow a i {
+        margin-right: 7px
+    }
+
+#callNow {
+    width: 49.3%;
+    height: auto;
+    float: left;
+    background: #f58d18;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 0px
+}
+
+    #callNow a .note1 {
+        font-family: CondensedBold
+    }
+
+#request {
+    width: 49.3%;
+    height: auto;
+    float: right;
+    background: #ff6000;
+    border-radius: 4px;
+    text-align: center;
+    padding: 3px 0px
+}
+
+    #request a .note1 {
+        font-family: CondensedBold
+    }
+
+#descriptionProduct {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 0px
+}
+.ulPrice {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 0px;
+    color: #747474;
+    line-height: 35px
+}
+
+    .ulPrice li {
+        float: left;
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        font-size: 16px
+    }
+
+        .ulPrice li .priceSale {
+            font-family: CondensedBold;
+            font-size: 25px;
+            color: #ff4200;
+            font-style: normal;
+            margin: 0px 5px;
+            line-height: 20px
+        }
+
+        .ulPrice li .price {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+            text-decoration: line-through;
+            font-style: normal;
+            margin: 0px 5px;
+            line-height: 20px
+        }
+
+        .ulPrice li .priSalebest {
+            color: #ff4200;
+            font-style: normal;
+            font-weight: bold;
+            margin: 0px 5px;
+            font-size: 16px
+        }
+
+        .ulPrice li .tk {
+            color: #ff4200;
+            font-size: 15px;
+            font-style: normal
+        }
+
+        .ulPrice li i {
+            color: #4a4ea3
+        }
+
+        .ulPrice li a {
+       
+            font-weight: bold;
+            padding: 0px 5px;
+            display: inline-block;
+            color: #FFF;
+            background: #38ab35;
+            border-radius: 5px;
+         
+            margin-bottom: 5px
+        }
+
+            .ulPrice li a i {
+                color: #fff
+            }
+
+@media screen and (max-width: 480px) {
+
+
+    #callNow {
+        width: 100%;
+        margin-bottom: 5px
+    }
+
+    #request {
+        width: 100%
+    }
+    #leftContentFeedback {
+        width: 100%
+    }
+
+    #rightContentFeedback {
+        width: 100%
+    }
+
+    #contentFeedback textarea {
+        width: 100%
+    }
+
+    #contentFeedback #txtName {
+        width: 100%;
+        margin: 5px 0px;
+        height: 30px
+    }
+
+    #contentFeedback #txtEmail {
+        width: 100%;
+        margin: 5px 0px;
+        height: 30px
+    }
+
+    #listFeedback .itemFb .contentItemFb .leftIcon {
+        width: 15%
+    }
+
+        #listFeedback .itemFb .contentItemFb .leftIcon i {
+            font-size: 40px
+        }
+
+    .rightContent {
+        width: 82%
+    }
+
+    #btnSubmitFeedback {
+        margin: 2px 0px;
+        width: 100%
+    }
+
+    #btnSubmitFeedbackfb {
+        margin: 0px 0px;
+        width: 100%
+    }
+
+    #listFeedback .itemFb .replay {
+        margin-left: 15%
+    }
+}

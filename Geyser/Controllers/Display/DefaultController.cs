@@ -60,7 +60,7 @@ namespace Geyser.Controllers.DisplayCustom
                     float phantram = 100 - ((pricesale * 100) / price);
                 if (listProduct[i].New == true)
                 {
-                    result.Append(" <div class=\"sale\"> Mới 2018</div>");
+                    result.Append(" <div class=\"sale\"> Mới 2019</div>");
                 }
                 else
                 {
@@ -146,7 +146,7 @@ namespace Geyser.Controllers.DisplayCustom
                     result.Append("<div class=\"listProducts\">");
                     listIdChild.Add(idCate);
 
-                    var listProduct = db.TblProduct.Where(p => p.Active == true && p.ViewHomes == true && listIdChild.Contains(p.IdCate.Value)).OrderBy(p =>p.IdCate).ToList();
+                    var listProduct = db.TblProduct.Where(p => p.Active == true && p.ViewHomes == true && listIdChild.Contains(p.IdCate.Value)).OrderBy(p =>p.Ord).ThenBy(p=>p.IdCate).ToList();
                     for (int j = 0; j < listProduct.Count; j++)
                     {
                         result.Append("<div class=\"tear\">");
@@ -156,7 +156,7 @@ namespace Geyser.Controllers.DisplayCustom
                         float phantram = 100 - ((pricesale * 100) / price);
                     if (listProduct[j].New == true)
                     {
-                        result.Append(" <div class=\"sale\"> Mới 2018</div>");
+                        result.Append(" <div class=\"sale\"> Mới 2019</div>");
                     }
                     else
                     {

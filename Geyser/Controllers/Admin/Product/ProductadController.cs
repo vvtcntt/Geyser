@@ -10,7 +10,6 @@ using System.Globalization;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
  using System.Runtime.InteropServices;
-using Geyser.Models;
 
 namespace Geyser.Controllers.Admin.Product
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using Geyser.models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -48,6 +49,8 @@ namespace Geyser.Models
         public virtual DbSet<TblManufactures> TblManufactures { get; set; }
         public virtual DbSet<TblMaps> TblMaps { get; set; }
         public virtual DbSet<TblModule> TblModule { get; set; }
+        public virtual DbSet<TblLike> TblLike { get; set; }
+        public virtual DbSet<TblFeedback> TblFeedback { get; set; }
         public virtual DbSet<TblNews> TblNews { get; set; }
         public virtual DbSet<TblNewsTag> TblNewsTag { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
@@ -70,7 +73,7 @@ namespace Geyser.Models
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 //optionsBuilder.UseSqlServer("Data Source=thiepvu\\sqlexpress;Initial Catalog=Geyser;Integrated Security=True");
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=kangaroo_Geyser;Persist Security Info=True;User ID=kangaroo_Geyser;Password=@Vanthiep123;MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer("Data Source=maylocnuocgeyser.com.vn;Initial Catalog=kangaroo_Geyser;Persist Security Info=True;User ID=kangaroo_Geyser;Password=@Vanthiep123;MultipleActiveResultSets=True");
 
             }
         }
@@ -133,8 +136,35 @@ namespace Geyser.Models
                 entity.Property(e => e.People).HasMaxLength(50);
 
                 entity.Property(e => e.Tabs).HasMaxLength(500);
+            }); modelBuilder.Entity<TblFeedback>(entity =>
+            {
+                entity.ToTable("tblFeedback");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Content).HasMaxLength(250);
+
+                entity.Property(e => e.DateCreate).HasColumnType("datetime");
+
+                entity.Property(e => e.Email).HasMaxLength(100);
+
+                entity.Property(e => e.IdC).HasColumnName("idC");
+
+                entity.Property(e => e.IdParent).HasColumnName("idParent");
+
+                entity.Property(e => e.Name).HasMaxLength(50);
+
+                entity.Property(e => e.Url).HasMaxLength(200);
             });
 
+            modelBuilder.Entity<TblLike>(entity =>
+            {
+                entity.ToTable("tblLike");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Like).HasColumnName("like");
+            });
             modelBuilder.Entity<TblBanks>(entity =>
             {
                 entity.ToTable("tblBanks");

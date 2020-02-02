@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Geyser</RootNamespace>
     <AssemblyName>Geyser</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,6 +127,7 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SqlClient, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.5.1\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
@@ -150,11 +152,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -196,6 +195,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -243,6 +243,7 @@
     <Compile Include="Controllers\Admin\Config\ConfigController.cs" />
     <Compile Include="Controllers\Admin\Criteria\CriteriaController.cs" />
     <Compile Include="Controllers\Admin\Criteria\InfoCriteriaController.cs" />
+    <Compile Include="Controllers\Admin\Feedback\feedbackController.cs" />
     <Compile Include="Controllers\Admin\Hotline\HotlineController.cs" />
     <Compile Include="Controllers\Admin\Images\GroupImagesController.cs" />
     <Compile Include="Controllers\Admin\Images\ImagesadController.cs" />
@@ -257,6 +258,7 @@
     <Compile Include="Controllers\Admin\Product\TagsadController.cs" />
     <Compile Include="Controllers\Admin\Role\ModuleController.cs" />
     <Compile Include="Controllers\Admin\User\UsersController.cs" />
+    <Compile Include="Controllers\Admin\Video\VideoadController.cs" />
     <Compile Include="Controllers\Admin\WebSites\WebController.cs" />
     <Compile Include="Controllers\Display\BaogiaController.cs" />
     <Compile Include="Controllers\Display\contactCustomController.cs" />
@@ -278,6 +280,7 @@
     <Compile Include="Models\clsUrlConstraint.cs" />
     <Compile Include="Models\EncryptandDecrypt.cs" />
     <Compile Include="Models\GeyserContext.cs" />
+    <Compile Include="Models\sendMail.cs" />
     <Compile Include="Models\StringClass.cs" />
     <Compile Include="Models\TblAddress.cs" />
     <Compile Include="Models\TblAgency.cs" />
@@ -297,6 +300,7 @@
     <Compile Include="Models\TblContact.cs" />
     <Compile Include="Models\TblCountOnline.cs" />
     <Compile Include="Models\TblCriteria.cs" />
+    <Compile Include="Models\TblFeedback.cs" />
     <Compile Include="Models\TblGroupAddress.cs" />
     <Compile Include="Models\TblGroupAgency.cs" />
     <Compile Include="Models\TblGroupCriteria.cs" />
@@ -308,6 +312,7 @@
     <Compile Include="Models\TblImage.cs" />
     <Compile Include="Models\TblImageProduct.cs" />
     <Compile Include="Models\TblInfoCriteria.cs" />
+    <Compile Include="Models\TblLike.cs" />
     <Compile Include="Models\TblLoiloc.cs" />
     <Compile Include="Models\TblManufactures.cs" />
     <Compile Include="Models\TblMaps.cs" />
@@ -1032,6 +1037,7 @@
     <Content Include="Content\Display\style\contact_Rs.css" />
     <Content Include="Content\Display\style\default.css" />
     <Content Include="Content\Display\style\default_Rs.css" />
+    <Content Include="Content\Display\style\feedback.css" />
     <Content Include="Content\Display\style\font-awesome.css" />
     <Content Include="Content\Display\style\font-awesome.min.css" />
     <Content Include="Content\Display\style\jquery.mmenu.all.css" />
@@ -1605,11 +1611,17 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Default\Error.cshtml" />
+    <Content Include="Views\Videoad\Create.cshtml" />
+    <Content Include="Views\Videoad\Edit.cshtml" />
+    <Content Include="Views\Videoad\Index.cshtml" />
+    <Content Include="Views\feedback\Index.cshtml" />
+    <Content Include="Views\product\formRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\newss\" />
     <Folder Include="Views\Orders\" />
+    <Folder Include="Views\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
