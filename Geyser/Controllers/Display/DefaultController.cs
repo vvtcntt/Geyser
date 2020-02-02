@@ -60,7 +60,7 @@ namespace Geyser.Controllers.DisplayCustom
                     float phantram = 100 - ((pricesale * 100) / price);
                 if (listProduct[i].New == true)
                 {
-                    result.Append(" <div class=\"sale\"> Mới 2019</div>");
+                    result.Append(" <div class=\"sale\"> Mới 2020</div>");
                 }
                 else
                 {
@@ -156,7 +156,7 @@ namespace Geyser.Controllers.DisplayCustom
                         float phantram = 100 - ((pricesale * 100) / price);
                     if (listProduct[j].New == true)
                     {
-                        result.Append(" <div class=\"sale\"> Mới 2019</div>");
+                        result.Append(" <div class=\"sale\"> Mới 2020</div>");
                     }
                     else
                     {

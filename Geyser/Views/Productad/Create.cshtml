@@ -764,9 +764,9 @@
              var text = $(this).val();
              var leght = $(this).val().length;
             $('#Title').val(text);
-            $('#Keyword').val("Giá " + text + " rẻ nhất, Nơi bán " + text+" giá rẻ nhất 2018");
+            $('#Keyword').val("Giá " + text + " rẻ nhất, Nơi bán " + text+" giá rẻ nhất 2020");
             $('.Soluong').html('Số ký tự là : '+leght +' (khuyến cáo là dưới 55 ký tự)');
-            $('#Tabs').val("Giá " + text + " Rẻ Nhất 2018, Nơi bán " + text + " Giá Rẻ Nhất 2018");
+            $('#Tabs').val("Giá " + text + " Rẻ Nhất 2020, Nơi bán " + text + " Giá Rẻ Nhất 2020");
 
              // alert(text);
             $.post("/Productad/CheckProduct", { "text": text },
